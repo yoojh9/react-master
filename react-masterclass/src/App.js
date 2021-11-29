@@ -19,8 +19,6 @@ const Text = styled.span`
   color:white;
 `;
 
-
-
 function App() {
   return (
     // <div style={{ display: 'flex' }}>
