@@ -21,3 +21,7 @@ Styled Components 사용 방법
  - animation
  - pseudo selector
  - state selector
+
+<br>
+
+### 4) Theme
