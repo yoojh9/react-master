@@ -13,7 +13,7 @@ const Btn = styled.button`
 
 const Input = styled.input.attrs({required:true, minLength: 10})`
   background-color: yellow;
-`;
+`; 
 
 function App() {
   return <Father as="header">
