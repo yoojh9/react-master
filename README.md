@@ -18,3 +18,5 @@ Styled Components 사용 방법
 <br>
 
 ### 3) react-masterclass-animation
+ - animation
+ - pseudo selector 
