@@ -1,4 +1,4 @@
-# react with typescript
+# react with TYPESCRIPT
 
 ```
 $ npx create-react-app react-typescript --template typescript
@@ -33,4 +33,32 @@ interface CircleProps {
 
 const Circle = ({bgColor}: CircleProps) => <Container></Container>
 
+```
+
+<br>
+
+#### 1) Optional PropType
+
+```
+interface CircleProps {
+    bgColor: string;
+    borderColor?: string;
+}
+```
+
+#### 2) Props default 값 설정
+
+- text와 borderColor는 optional한 Props임.
+- 각각 다른 방식으로 default 값을 설정함
+
+```
+interface CircleProps {
+    bgColor: string;
+    borderColor?: string;
+    text?: string;
+}
+
+const Circle = ({ bgColor, borderColor, text="default text"}: CircleProps) => {
+    return <Container bgColor={bgColor} borderColor={borderColor ?? bgColor}>{text}</Container>
+}
 ```
