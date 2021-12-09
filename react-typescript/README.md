@@ -162,3 +162,18 @@ export { myTheme };
 <br>
 
 https://github.com/yoojh9/react-master/commit/ceefe37ed574d00f0dab132de77d62666cd2fa10 참고
+
+<br><br>
+
+## 6. Event
+타입스크립트에서 정의하는 이벤트 타입은 https://reactjs.org/docs/events.html 참고
+
+<br><br>
+
+## 7. library
+앞으로 외부 라이브러리를 설치하게 되면, typescript로 변환된 @types/ 라이브러리가 있는지 한번 시도해보자
+
+```
+$ npm i styled-components
+$ npm i --save-dev @types/styled-components
+```
