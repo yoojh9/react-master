@@ -1,4 +1,4 @@
-# react with TYPESCRIPT
+# React with TYPESCRIPT
 
 ```
 $ npx create-react-app react-typescript --template typescript
