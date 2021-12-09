@@ -105,3 +105,56 @@ typescript를 이용한 state 관리
     setUsername(value)
   };
 ```
+
+<br><br>
+
+## 6. Themes
+- styled-components와 typescript 연결
+- https://styled-components.com/docs/api#typescript 참고
+
+#### 1) Install styled-components on DefinitelyTyped
+
+```
+npm install @types/styled-components
+```
+
+<br>
+
+#### 2) Create a declarations file (src/styled.d.ts)
+
+```
+// import original module declarations
+import 'styled-components';
+
+// and extend them!
+declare module 'styled-components' {
+  export interface DefaultTheme {
+    borderRadius: string;
+
+    colors: {
+      main: string;
+      secondary: string;
+    };
+  }
+}
+```
+
+<br>
+
+#### 3) Create a theme (ex. src/my-theme.ts)
+
+```
+// my-theme.ts
+import { DefaultTheme } from 'styled-components';
+
+const myTheme: DefaultTheme = {
+  borderRadius: '5px',
+
+  colors: {
+    main: 'cyan',
+    secondary: 'magenta',
+  },
+};
+
+export { myTheme };
+```
