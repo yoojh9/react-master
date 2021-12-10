@@ -141,8 +141,11 @@ const GlobalStyle = createGlobalStyle`
 ## 6. Theme
 https://flatuicolors.com/
 
+<br><br>
 
-
+## 7. Link
+a태그의 href를 이용하면 새로고침 되므로 href를 이용하지 않고
+react-router-dom의 \<Link\> 태그를 이용한다
 
 
  

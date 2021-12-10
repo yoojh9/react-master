@@ -62,14 +62,15 @@ const GlobalStyle = createGlobalStyle`
   }
   a {
     text-decoration: none;
+    color: inherit;
   }
 `
 
 function App() {
   return (
     <>
-      <GlobalStyle/>
-      <Router/>
+      <GlobalStyle />
+      <Router />
     </>
 
   );
