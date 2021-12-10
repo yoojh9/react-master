@@ -148,4 +148,31 @@ a태그의 href를 이용하면 새로고침 되므로 href를 이용하지 않�
 react-router-dom의 \<Link\> 태그를 이용한다
 
 
- 
+<br><br>
+
+## 8. Featch Data
+특정한 시기에만 코드를 실행하기 위해서는 useEffect()를 사용하면 됨.
+useEffect()를 사용하면 코드를 component가 시작할 때 실행시킬지, component가 끝날 때 실행시킬지, 뭐든 변화가 일어날 때마다 실행시킬지 결정할 수 있음.
+
+```
+// 컴포넌트가 시작될 때 한번만 실행
+useEffect(() => {
+
+}, [])
+```
+
+<br>
+
+```
+// fetch data from api
+const [coins, setCoins] = useState<CoinInterface[]>([]);
+    useEffect(() => {
+        // 즉시 실행 함수 (()=>{})()
+        (async () => {
+            const response = await fetch('https://api.coinpaprika.com/v1/coins');
+            const json = await response.json();
+            setCoins(json.slice(0, 100))
+        })();
+    }, [])
+```
+
