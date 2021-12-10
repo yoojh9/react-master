@@ -177,3 +177,64 @@ const [coins, setCoins] = useState<CoinInterface[]>([]);
     }, [])
 ```
 
+<br><br>
+
+## 9. React-Router
+
+https://v5.reactrouter.com/web/api/Link
+
+\<Link to=\>에 string 뿐만 아니라 Location object를 보낼 수도 있음
+
+```
+<Link
+  to={{
+    pathname: "/courses",
+    search: "?sort=name",
+    hash: "#the-hash",
+    state: { fromDashboard: true }
+  }}
+/>
+```
+
+프로젝트에서는 아래와 같이 사용
+
+```
+// Coins.tsx
+<Link
+    to={{
+        pathname: `/${coin.id}`,
+        state: { name: coin.name }
+    }}
+>
+    <Img src={`https://cryptoicon-api.vercel.app/api/icon/${coin.symbol.toLowerCase()}`} />
+    {coin.name} &rarr;
+</Link >
+```
+
+라우팅 하는 페이지에서는 react router DOM이 보내주는 location 오브젝트에 접근하기만 하면 된다.
+
+```
+// Coin.tsx
+
+function Coin() {
+    ...
+    const location = useLocation();
+    console.log(location);
+    ...
+}
+```
+
+대신 state를 사용하여 데이터를 보낼 경우 http://localhost:3000/btc-bitcoin 로 직접 접근했을 때는 
+TypeError: Cannot read properties of undefined (reading 'name') 에러가 난다.
+state가 생성되려면 Home 화면을 먼저 열어야 하기 때문에 아래와 같이 처리한다
+
+```
+// state가 있을 경우 name을 가져오고 없을 경우 Loading을 표시한다.
+<Title>{state?.name || "Loading.."}</Title>
+
+```
+
+
+
+
+
