@@ -1,4 +1,4 @@
-# React with TYPESCRIPT
+# Crypto-Tracker
 
 
 ## 1. 필요 라이브러리 설치
@@ -117,6 +117,7 @@ const GlobalStyle = createGlobalStyle`
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 ...
 
+```
 
 이후 createGlobalStyle 하단에서 font를 사용한다.
 
