@@ -234,7 +234,22 @@ state가 생성되려면 Home 화면을 먼저 열어야 하기 때문에 아래
 
 ```
 
+<br><br>
 
+## 10. Nested Router
+- route 안에 있는 또 다른 route
+- 탭을 만들 때 유용
 
+```
+// chart.tsx
+<Switch>
+    <Route path={`/${coinId}/price`}>
+        <Price />
+    </Route>
+    <Route path={`/${coinId}/chart`}>
+        <Chart />
+    </Route>
+</Switch>
+```
 
 
