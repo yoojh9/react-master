@@ -252,4 +252,20 @@ state가 생성되려면 Home 화면을 먼저 열어야 하기 때문에 아래
 </Switch>
 ```
 
+<br><br>
+
+## 11. useRouteMatch()
+특정한 URL에 있는지 여부를 알려줌.
+url이 /:coinId/price일 경우에는 아래처럼 object 값을 받지만 
+url이 다를 경우에는 null
+
+```
+import { useParams, useRouteMatch } from "react-router";
+
+const priceMatch = useRouteMatch("/:coinId/price");
+
+console.log(priceMatch); // { path: '/:coinId/price', url: '/btc-bitcoin/price', isExact: true, params: {…}}
+
+```
+
 
