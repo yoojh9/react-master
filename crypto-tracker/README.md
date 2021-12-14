@@ -268,4 +268,74 @@ console.log(priceMatch); // { path: '/:coinId/price', url: '/btc-bitcoin/price',
 
 ```
 
+<br><br>
+
+## 12. React Query, useQuery()
+- React Query를 사용하면 useEffect(), useState() 코드를 지워도 됨.
+- React Query는 다른 스크린에서 다시 돌아와도 화면이 새로고침 되지 않음 (데이터를 캐시에 저장함) 리액트 쿼리는 데이터를 파괴하지 않음.
+- https://react-query.tanstack.com/overview
+
+
+```
+$ npm i react-query
+```
+
+<br>
+
+QueryClientProvider 하위에 있는 모든 컴포넌트에서는 queryClient 접근 가능 
+```
+ const queryClient = new QueryClient()
+ 
+ export default function App() {
+   return (
+     <QueryClientProvider client={queryClient}>
+       <Example />
+     </QueryClientProvider>
+   )
+ }
+```
+
+<br>
+
+```
+// index.tsx
+const queryClient = new QueryClient()
+
+ReactDOM.render(
+    <React.StrictMode>
+        <QueryClientProvider client={queryClient}>
+            <ThemeProvider theme={theme}>
+                <App />
+            </ThemeProvider>
+        </QueryClientProvider>
+    </React.StrictMode>,
+    document.getElementById("root")
+); 
+```
+
+<br>
+
+useQuery는 아래와 같이 사용한다. useQuery()는 isLoading이라는 boolean 값을 리턴하는데, isLoading()을 쓰면 기존 코드에서 setLoading() 하던 코드를 대체할 수 있다.
+
+```
+// Coins.tsx
+/*
+const [coins, setCoins] = useState<CoinInterface[]>([]);
+const [loading, setLoading] = useState(true);
+
+useEffect(() => {
+    // 즉시 실행 함수 (()=>{})()
+    (async () => {
+        const response = await fetch('https://api.coinpaprika.com/v1/coins');
+        const json = await response.json();
+        setCoins(json.slice(0, 100));
+        setLoading(false);
+    })();
+}, [])
+*/
+
+// useQuery()를 사용하면 위 코드를 모두 대체할 수 있다
+const { isLoading, data } = useQuery<ICoin[]>("allCoins", fetchCoins)
+```
+
 
