@@ -318,9 +318,12 @@ ReactDOM.render(
 
 useQuery는 아래와 같이 사용한다. useQuery()는 isLoading이라는 boolean 값을 리턴하는데, isLoading()을 쓰면 기존 코드에서 setLoading() 하던 코드를 대체할 수 있다.
 
+<br>
+
+아래는 기존에 개발한 코드
+
 ```
 // Coins.tsx
-/*
 const [coins, setCoins] = useState<CoinInterface[]>([]);
 const [loading, setLoading] = useState(true);
 
@@ -333,9 +336,14 @@ useEffect(() => {
         setLoading(false);
     })();
 }, [])
-*/
+```
 
-// useQuery()를 사용하면 위 코드를 모두 대체할 수 있다
+<br>
+
+useQuery()를 사용하면 위 코드를 모두 대체할 수 있다
+
+```
+// fetchCoins()는 api.ts 파일에 있음
 const { isLoading, data } = useQuery<ICoin[]>("allCoins", fetchCoins)
 ```
 
