@@ -271,6 +271,7 @@ console.log(priceMatch); // { path: '/:coinId/price', url: '/btc-bitcoin/price',
 <br><br>
 
 ## 12. React Query, useQuery()
+- React Query makes fetching, caching, synchronizing and updating server state in your React applications a breeze.
 - React Query를 사용하면 useEffect(), useState() 코드를 지워도 됨.
 - React Query는 다른 스크린에서 다시 돌아와도 화면이 새로고침 되지 않음 (데이터를 캐시에 저장함) 리액트 쿼리는 데이터를 파괴하지 않음.
 - https://react-query.tanstack.com/overview
