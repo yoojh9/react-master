@@ -14,7 +14,8 @@ const Header = styled.header`
     display: flex;
     justify-content: center;
     align-items: center;
-`;
+`
+
 const CoinList = styled.ul``
 const Coin = styled.li`
     background-color: white;

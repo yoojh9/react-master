@@ -274,6 +274,7 @@ console.log(priceMatch); // { path: '/:coinId/price', url: '/btc-bitcoin/price',
 - React Query makes fetching, caching, synchronizing and updating server state in your React applications a breeze.
 - React Query를 사용하면 useEffect(), useState() 코드를 지워도 됨.
 - React Query는 다른 스크린에서 다시 돌아와도 화면이 새로고침 되지 않음 (데이터를 캐시에 저장함) 리액트 쿼리는 데이터를 파괴하지 않음.
+- React Query는 캐시를 사용하므로, 스크린에 다시 진입하더라도 호출한 API를 다시 불러오지 않음.
 - https://react-query.tanstack.com/overview
 
 
@@ -347,4 +348,23 @@ useQuery()를 사용하면 위 코드를 모두 대체할 수 있다
 const { isLoading, data } = useQuery<ICoin[]>("allCoins", fetchCoins)
 ```
 
+<br><br>
 
+## 13. React Query Devtools
+React Query에 있는 devtools을 import 해오면 캐시에 있는 query를 볼 수 있다.
+
+```
+// App.tsx
+import { ReactQueryDevtools } from "react-query/devtools"
+
+function App() {
+  return (
+    <>
+      <GlobalStyle />
+      <Router />
+      <ReactQueryDevtools initialIsOpen={true}/>
+    </>
+
+  );
+}
+```
