@@ -70,8 +70,12 @@ function ToDoList() {
 }
 ```
 
+<br>
+
 ### (2) watch()
  - form의 입력값들의 변화를 관찰한다.
+
+<br>
 
 ### (3) handleSubmit()
  - onSubmit() 이벤트를 대체한다.
@@ -94,6 +98,8 @@ function ToDoList() {
         </form>
     </div>;
 ```
+
+<br>
 
 ### (4) formState
  - 입력값이 유효하지 않을 경우 아래와 같이 어떤 종류의 에러인지 알려줌
