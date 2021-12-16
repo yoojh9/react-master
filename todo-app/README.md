@@ -8,7 +8,7 @@ $ npx create-react-app my-app --template typescript
 
 <br>
 
-## 1. react-hook-form
+# 1. react-hook-form
 react-hook-form을 사용하기 이전에는 아래와 같이 코드를 작성함
 
 ```
@@ -49,13 +49,13 @@ $ npm install react-hook-form
 
 <br>
 
-### 1) react-hook-form 사용하기
+## 1) react-hook-form 사용하기
 
-#### (1) register()
+### (1) register()
 - {...register("toDo")} 이렇게 작성하면 register 함수가 반환하는 객체를 가져다가 input에 props로 전달할 수 있다.
 - register 객체는 { name: 'toDo', onChange: ƒ, onBlur: ƒ, ref: ƒ} 값을 가지고 있고, 이미 onChange를 가지고 있으므로 onChange 이벤트를 따로 작성하지 않아도 된다.
 
-#### (2) watch()
+### (2) watch()
 - form의 입력값들의 변화를 관찰한다.
 
 
