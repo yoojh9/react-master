@@ -430,7 +430,7 @@ $ npm i --save-dev @types/react-helmet
 ### 1) without Recoil
 - lightTheme, darkTheme을 구현하고 싶은데 state에 따라 theme을 구현하고 싶음.
 - index.tsx에서는 state를 구현할 수 없으므로 <ThemeProvider />를 App.tsx로 옮긴다
-
+- commit history: https://github.com/yoojh9/react-master/commit/b3125174872283e84fadf11265925d4bf733414b
 
 ```
 // App.tsx
