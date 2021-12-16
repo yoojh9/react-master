@@ -669,5 +669,29 @@ export const isDarkAtom = atom({
 // App.tsx
   const isDark = useRecoilValue(isDarkAtom);
 
+```
 
+<br>
+
+### 3) Recoil atom 값 변경하기
+- atom의 value를 감지하기 위해서는 useRecoilValue()라는 hook을 쓴다
+- value를 변경하기 위해서는 useSetRecoilState()를 사용한다.
+
+```
+function Coins() {
+    const setDarkAtom = useSetRecoilState(isDarkAtom);
+    const toggleDarkAtom = () => setDarkAtom(prev => !prev)
+
+
+    return (
+        <Container>
+            ...
+            <Header>
+                <title> 코인 </title>
+                <button onClick={toggleDarkAtom}>Toggle Mode</button>
+            </Header>
+            ...
+        </Container>
+    )
+}
 ```
