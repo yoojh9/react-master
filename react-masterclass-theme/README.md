@@ -4,7 +4,7 @@
 
 ### 1. Theme 설정
 
-```
+```TypeScript
 // index.js
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -30,7 +30,7 @@ ReactDOM.render(
 
 <br><br>
 
-```
+```TypeScript
 // App.js
 
 import styled from 'styled-components';
