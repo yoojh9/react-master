@@ -3,6 +3,8 @@ import { ReactQueryDevtools } from "react-query/devtools"
 import Router from "./Router";
 import { darkTheme, lightTheme } from "./theme";
 import { useState } from "react";
+import { useRecoilValue } from "recoil";
+import { isDarkAtom } from "./atoms";
 
 // global scope style
 // styled-reset 그대로 복사 (https://github.com/zacanger/styled-reset/blob/master/src/index.ts)
@@ -71,14 +73,13 @@ const GlobalStyle = createGlobalStyle`
 `
 
 function App() {
-  const [isDark, setIsDark] = useState(false);
-  const toggleDark = () => setIsDark((current) => !current);
+  const isDark = useRecoilValue(isDarkAtom);
 
   return (
     <>
       <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
         <GlobalStyle />
-        <Router isDark={isDark} toggleDark={toggleDark} />
+        <Router />
         <ReactQueryDevtools initialIsOpen={true} />
       </ThemeProvider>
     </>

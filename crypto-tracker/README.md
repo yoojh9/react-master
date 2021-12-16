@@ -139,7 +139,7 @@ const GlobalStyle = createGlobalStyle`
 
 <br><br>
 
-## 6. Theme
+## 6. Theme 설정에 좋은 Color picker 사이트
 https://flatuicolors.com/
 
 <br><br>
@@ -613,4 +613,61 @@ interface ChartProps {
 function Chart({ coinId, isDark }: ChartProps) {
 
 }
+```
+
+<br><br>
+
+### 2) Recoil 사용하기
+- https://recoiljs.org/ko/
+- Recoil은 atom이라는 개념을 사용하여 global state를 관리함
+
+<br>
+
+#### (1) 설치
+
+```
+$ npm install recoil
+```
+
+#### (2) index.tsx에서 컴포넌트를 \<RecoilRoot\/\>로 감싼다. (QueryClientProvider와 비슷)
+
+```
+// index.tsx
+
+ReactDOM.render(
+    <React.StrictMode>
+        <RecoilRoot>
+            <QueryClientProvider client={queryClient}>
+                <App />
+            </QueryClientProvider>
+        </RecoilRoot>
+    </React.StrictMode>,
+    document.getElementById("root")
+); 
+```
+
+<br>
+
+#### (3) atoms.ts 파일 생성
+
+```
+// atoms.ts
+
+import { atom } from "recoil";
+
+export const isDarkAtom = atom({
+    key: "isDark",
+    default: false,
+})
+```
+
+<br>
+
+#### (4) state가 필요한 컴포넌트에서 useRecoilValue() 함수를 호출한다.
+
+```
+// App.tsx
+  const isDark = useRecoilValue(isDarkAtom);
+
+
 ```
