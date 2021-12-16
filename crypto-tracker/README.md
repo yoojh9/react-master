@@ -420,3 +420,34 @@ $ npm i --save-dev @types/react-helmet
     )
 ```
 
+<br><br>
+
+## 16. Recoil
+- A state management library for React
+
+<br>
+
+### 1) without Recoil
+- lightTheme, darkTheme을 구현하고 싶은데 state에 따라 theme을 구현하고 싶음.
+- index.tsx에서는 state를 구현할 수 없으므로 <ThemeProvider />를 App.tsx로 옮긴다
+
+
+```
+// App.tsx
+function App() {
+  const [isDark, setIsDark] = useState(false);
+  const toggleDark = () => setIsDark((current) => !current);
+
+  return (
+    <>
+      <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
+        <button onClick={toggleDark}>Dark Mode</button>
+        <GlobalStyle />
+        <Router />
+        <ReactQueryDevtools initialIsOpen={true} />
+      </ThemeProvider>
+    </>
+
+  );
+}
+```
