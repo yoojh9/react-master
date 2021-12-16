@@ -369,6 +369,19 @@ function App() {
 }
 ```
 
+<br>
+useQuery() hook을 쓰는 방법은 첫번째 argument로 unique한 key를 주고, 두번째 argument는 fetcher 함수, 세번째는 옵션 object를 줄 수 있는데, refetchInterval 등의 값을 설정할 수 있다.
+```
+// coin.tsx
+const { isLoading: tickersLoading, data: tickersData } = useQuery<PriceData>(
+    ["ticker", coinId], 
+    () => fetchCoinTickers(coinId),
+    {
+        refetchInterval: 5000, //5초
+    }
+);
+```
+
 <br><br>
 
 ## 14. APEXCHARTS.js
@@ -378,3 +391,32 @@ https://apexcharts.com/docs/react-charts/
 ```
 npm install --save react-apexcharts apexcharts
 ```
+
+<br><br>
+
+## 15. React Helmet
+
+React Helmet는 문서의 header를 바꾸는 데 사용할 수 있음.
+Helmet은 단지 head로 가는 direct link일 뿐이다.
+header가 아니라 head
+
+```
+$ npm install react-helmet
+$ npm i --save-dev @types/react-helmet
+```
+
+<br>
+
+```
+// Coin.tsx
+    return (
+      <Container>
+        <Helmet>
+            <title>
+                {state?.name ? state.name : loading ? "Loading.." : infoData?.name}
+            </title>
+        </Helmet>
+        </Container>
+    )
+```
+

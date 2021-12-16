@@ -1,4 +1,5 @@
 import { useQuery } from "react-query";
+import { Helmet } from "react-helmet";
 import { useParams, useRouteMatch } from "react-router";
 import { Switch, Route, useLocation, Link } from "react-router-dom";
 import styled from "styled-components";
@@ -145,8 +146,17 @@ function Coin() {
     // const [priceInfo, setPriceInfo] = useState<PriceData>();
     const priceMatch = useRouteMatch("/:coinId/price");
     const chartMatch = useRouteMatch("/:coinId/chart");
-    const { isLoading: infoLoading, data: infoData } = useQuery<InfoData>(["info", coinId], () => fetchCoinInfo(coinId));
-    const { isLoading: tickersLoading, data: tickersData } = useQuery<PriceData>(["ticker", coinId], () => fetchCoinTickers(coinId));
+    const { isLoading: infoLoading, data: infoData } = useQuery<InfoData>(
+        ["info", coinId],
+        () => fetchCoinInfo(coinId),
+    );
+    const { isLoading: tickersLoading, data: tickersData } = useQuery<PriceData>(
+        ["ticker", coinId],
+        () => fetchCoinTickers(coinId),
+        {
+            refetchInterval: 5000, //5초
+        }
+    );
     /*
     useEffect(() => {
         (async () => {
@@ -164,6 +174,11 @@ function Coin() {
     */
     const loading = infoLoading || tickersLoading;
     return <Container>
+        <Helmet>
+            <title>
+                {state?.name ? state.name : loading ? "Loading.." : infoData?.name}
+            </title>
+        </Helmet>
         <Header>
             <Title>{state?.name ? state.name : loading ? "Loading.." : infoData?.name}</Title>
         </Header>
@@ -180,8 +195,8 @@ function Coin() {
                             <span>{infoData?.symbol}</span>
                         </OverviewItem>
                         <OverviewItem>
-                            <span>Open Source: </span>
-                            <span>{infoData?.open_source ? "Yes" : "No"}</span>
+                            <span>Price: </span>
+                            <span>$ {tickersData?.quotes.USD.price.toFixed(3)}</span>
                         </OverviewItem>
                     </Overview>
                     <Description>
