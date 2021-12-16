@@ -40,3 +40,11 @@ Styled Components 사용 방법
 ## 3. React 실습
 
 ### 1) crypto-tracker
+ - React-Router
+ - reset css
+ - Font
+ - <Link />
+ - Fetch Data
+ - React Query / React Query Devtools
+ - React Helmet
+ - Recoil
