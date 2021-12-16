@@ -11,7 +11,7 @@ $ npx create-react-app my-app --template typescript
 # 1. react-hook-form
 react-hook-form을 사용하기 이전에는 아래와 같이 코드를 작성함
 
-```
+```TypeScript
 // TodoList.tsx
 import React, { useState } from "react";
 
@@ -59,7 +59,7 @@ $ npm install react-hook-form
 - form의 입력값들의 변화를 관찰한다.
 
 
-```
+```TypeScript
 // TodoList.tsx
 
 import { useForm } from "react-hook-form";
