@@ -424,10 +424,13 @@ $ npm i --save-dev @types/react-helmet
 
 ## 16. Recoil
 - A state management library for React
+- <b>global state</b>는 어플리케이션 전체에서 공유되는 state이다.
+- 예를 들면 user의 login 여부로 components가 달라져야 한다.
 
 <br>
 
-### 1) without Recoil
+### 1) state management library 없이 state 전달하기
+
 - lightTheme, darkTheme을 구현하고 싶은데 state에 따라 theme을 구현하고 싶음.
 - index.tsx에서는 state를 구현할 수 없으므로 <ThemeProvider />를 App.tsx로 옮긴다
 - commit history: https://github.com/yoojh9/react-master/commit/b3125174872283e84fadf11265925d4bf733414b
@@ -449,5 +452,164 @@ function App() {
     </>
 
   );
+}
+```
+
+<br>
+
+- '코인' 타이틀 옆에 theme 토글 버튼을 두고 싶으면, App.tsx에서 isDark state를 변경하는 toggleDark() 함수를 App -> Router -> Coins 컴포넌트까지 Props로 보내야 함
+
+```
+//App.tsx
+function App() {
+  const [isDark, setIsDark] = useState(false);
+  const toggleDark = () => setIsDark((current) => !current);
+
+  return (
+    <>
+      <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
+        <button onClick={toggleDark}>Dark Mode</button>
+        <GlobalStyle />
+        <Router toggleDark={toggleDark} />
+        <ReactQueryDevtools initialIsOpen={true} />
+      </ThemeProvider>
+    </>
+  );
+}
+```
+
+<br>
+
+```
+// Router.tsx
+interface IRouterProps {
+    toggleDark: () => void
+}
+
+function Router({ toggleDark }: IRouterProps) {
+
+    return <BrowserRouter>
+        <Switch>
+            <Route path="/:coinId">
+                <Coin />
+            </Route>
+            <Route path="/">
+                <Coins toggleDark={toggleDark}></Coins>
+            </Route>
+        </Switch>
+    </BrowserRouter>
+}
+```
+
+<br>
+
+```
+// Coins.tsx
+interface ICoinsProps {
+    toggleDark: () => void
+}
+
+function Coins({ toggleDark }: ICoinsProps) {
+    const { isLoading, data } = useQuery<ICoin[]>("allCoins", fetchCoins)
+
+    return (
+        <Container>
+            ...
+            <Header>
+                <Title>코인</Title>
+                <button onClick={toggleDark}>Toggle Dark Mode</button>
+            </Header>
+            ...
+        </Container>
+    )
+}
+
+```
+
+<br>
+
+- 또한 Chart 컴포넌트에도 현재 theme 정보를 알려줘야 하므로, isDark state를 넘겨줘야 함.
+- App.tsx -> Router.tsx -> Coin.tsx -> Chart.tsx
+
+```
+// App.tsx
+function App() {
+  const [isDark, setIsDark] = useState(false);
+  const toggleDark = () => setIsDark((current) => !current);
+
+  return (
+    <>
+      <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
+        <button onClick={toggleDark}>Dark Mode</button>
+        <GlobalStyle />
+        <Router isDark={isDark} toggleDark={toggleDark} />
+        <ReactQueryDevtools initialIsOpen={true} />
+      </ThemeProvider>
+    </>
+  );
+}
+
+```
+
+<br>
+
+```
+// Router.tsx
+interface IRouterProps {
+    toggleDark: () => void
+    isDark: boolean
+}
+
+function Router({ toggleDark, isDark }: IRouterProps) {
+
+    return <BrowserRouter>
+        <Switch>
+            <Route path="/:coinId">
+                <Coin />
+            </Route>
+            <Route path="/">
+                <Coins toggleDark={toggleDark} isDark={isDark}></Coins>
+            </Route>
+        </Switch>
+    </BrowserRouter>
+}
+
+```
+
+<br>
+
+```
+// Coin.tsx
+
+interface ICoinProps {
+    isDark: boolean;
+}
+
+function Coin({ isDark }: ICoinProps) {
+   return <Container>
+    ...
+    <Switch>
+      <Route path={`/:coinId/price`}>
+          <Price />
+      </Route>
+      <Route path={`/:coinId/chart`}>
+          <Chart coinId={coinId} isDark={isDark} />
+      </Route>
+  </Switch>
+   </Container>
+}
+```
+
+<br>
+
+```
+// Chart.tsx
+interface ChartProps {
+    coinId: string;
+    isDark: boolean;
+}
+
+function Chart({ coinId, isDark }: ChartProps) {
+
 }
 ```
