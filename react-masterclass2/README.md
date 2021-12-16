@@ -9,7 +9,7 @@
  
 - 컴포넌트의 태그는 바꾸고 싶은데, 스타일은 유지하고 싶은 경우, 'as'를 사용하여 스타일은 유지하고 태그만 변경할 수 있음
    
-```
+```TypeScript
 const Btn = styled.button`
   color: white;
   background-color: tomato;
@@ -30,8 +30,7 @@ function App() {
 
 ### 2. 공통 attr 추가
 
-```
-
+```TypeScript
 const Input = styled.input.attrs({required:true, minLength: 10})`
   background-color: yellow;
 `;
