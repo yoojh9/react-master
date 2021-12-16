@@ -22,7 +22,7 @@ npm install styled-components
 
 - 속성 값을 외부에서 받아 스타일을 재사용 할 수 있음.
    
-```
+```TypeScript
 const Box = styled.div`
   background-color: ${props => props.bgColor};
   width: 100px;
@@ -35,7 +35,7 @@ const Box = styled.div`
 
 - 스타일 값을 상속 받을 수도 있음(Extend)   
 
-```
+```TypeScript
 const Box = styled.div`
   background-color: ${props => props.bgColor};
   width: 100px;
