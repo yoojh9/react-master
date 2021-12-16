@@ -26,7 +26,7 @@ https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types
 ## 3. PropType
 typescript는 PropType을 쓰는 대신 interface를 사용하면 됨
 
-```
+```TypeScript
 interface CircleProps {
     bgColor: string;
 }
@@ -39,7 +39,7 @@ const Circle = ({bgColor}: CircleProps) => <Container></Container>
 
 #### 1) Optional PropType
 
-```
+```TypeScript
 interface CircleProps {
     bgColor: string;
     borderColor?: string;
@@ -51,7 +51,7 @@ interface CircleProps {
 - text와 borderColor는 optional한 Props임.
 - 각각 다른 방식으로 default 값을 설정함
 
-```
+```TypeScript
 interface CircleProps {
     bgColor: string;
     borderColor?: string;
@@ -71,7 +71,7 @@ const Circle = ({ bgColor, borderColor, text="default text"}: CircleProps) => {
 
 state에 default 값을 주면 해당 값에 맞게 타입이 자동으로 지정됨
 
-```
+```TypeScript
     const [counter, setCounter] = useState(1);
 
     setCounter(2);
@@ -81,7 +81,7 @@ state에 default 값을 주면 해당 값에 맞게 타입이 자동으로 지�
 
 타입스크립트를 이용하여 타입을 2가지 이상 지정할 수 있음 (거의 사용하지 않음)
 
-```
+```TypeScript
     const [counter, setCounter] = useState<number|string>(1);
 
     setCounter(2);
@@ -95,7 +95,7 @@ state에 default 값을 주면 해당 값에 맞게 타입이 자동으로 지�
 
 typescript를 이용한 state 관리
 
-```
+```TypeScript
   const [username, setUsername] = useState("");
   const onChange = (event: React.FormEvent<HTMLInputElement>) => {
     const {
@@ -122,7 +122,7 @@ npm install @types/styled-components
 
 #### 2) Create a declarations file (src/styled.d.ts)
 
-```
+```TypeScript
 // import original module declarations
 import 'styled-components';
 
@@ -143,7 +143,7 @@ declare module 'styled-components' {
 
 #### 3) Create a theme (ex. src/my-theme.ts)
 
-```
+```TypeScript
 // my-theme.ts
 import { DefaultTheme } from 'styled-components';
 
