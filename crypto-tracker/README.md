@@ -15,7 +15,7 @@ $ npm i react-query
 라우팅 설정
 어플리케이션에 URL을 가질 수 있게 해 줌
 
-```
+```TypeScript
 // Router.tsx
 function Router() {
     return <BrowserRouter>
@@ -50,7 +50,7 @@ https://meyerweb.com/eric/tools/css/reset/
 #### 1) styled-reset을 사용
 https://www.npmjs.com/package/styled-reset
 
-```
+```TypeScript
 import * as React from 'react'
 import { Reset } from 'styled-reset'
 
@@ -72,7 +72,7 @@ ghost component
 부모 컴포넌트 없이 여러개의 자식 컴포넌트를 리턴하게 해 줌
 기존에는 여러개의 자식 컴포넌트를 리턴하려면 \<div\>로 리턴했어야 하는데
 
-```
+```TypeScript
 function App() {
   return (
     <div>
@@ -85,7 +85,7 @@ function App() {
 
 Fragment를 이용하면 아래처럼 사용하면 됨
 
-```
+```TypeScript
 function App() {
   return (
     <>
@@ -104,13 +104,13 @@ https://fonts.google.com/
 
 원하는 폰트 선택 후 @import로 사용
 
-```
+```TypeScript
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap');
 ```
 
 이 부분은 작성한 createGlobalStyle 내 상단에 붙여넣는다.
 
-```
+```TypeScript
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap');
   html, body, div, span, applet, object, iframe,
@@ -121,7 +121,7 @@ const GlobalStyle = createGlobalStyle`
 
 이후 createGlobalStyle 하단에서 font를 사용한다.
 
-```
+```TypeScript
 const GlobalStyle = createGlobalStyle`
   ...
   // 몇가지 기본값 추가
@@ -155,7 +155,7 @@ react-router-dom의 \<Link\> 태그를 이용한다
 특정한 시기에만 코드를 실행하기 위해서는 useEffect()를 사용하면 됨.
 useEffect()를 사용하면 코드를 component가 시작할 때 실행시킬지, component가 끝날 때 실행시킬지, 뭐든 변화가 일어날 때마다 실행시킬지 결정할 수 있음.
 
-```
+```TypeScript
 // 컴포넌트가 시작될 때 한번만 실행
 useEffect(() => {
 
@@ -164,7 +164,7 @@ useEffect(() => {
 
 <br>
 
-```
+```TypeScript
 // fetch data from api
 const [coins, setCoins] = useState<CoinInterface[]>([]);
     useEffect(() => {
@@ -185,7 +185,7 @@ https://v5.reactrouter.com/web/api/Link
 
 \<Link to=\>에 string 뿐만 아니라 Location object를 보낼 수도 있음
 
-```
+```TypeScript
 <Link
   to={{
     pathname: "/courses",
@@ -198,7 +198,7 @@ https://v5.reactrouter.com/web/api/Link
 
 프로젝트에서는 아래와 같이 사용
 
-```
+```TypeScript
 // Coins.tsx
 <Link
     to={{
@@ -213,7 +213,7 @@ https://v5.reactrouter.com/web/api/Link
 
 라우팅 하는 페이지에서는 react router DOM이 보내주는 location 오브젝트에 접근하기만 하면 된다.
 
-```
+```TypeScript
 // Coin.tsx
 
 function Coin() {
@@ -228,7 +228,7 @@ function Coin() {
 TypeError: Cannot read properties of undefined (reading 'name') 에러가 난다.
 state가 생성되려면 Home 화면을 먼저 열어야 하기 때문에 아래와 같이 처리한다
 
-```
+```TypeScript
 // state가 있을 경우 name을 가져오고 없을 경우 Loading을 표시한다.
 <Title>{state?.name || "Loading.."}</Title>
 
@@ -240,7 +240,7 @@ state가 생성되려면 Home 화면을 먼저 열어야 하기 때문에 아래
 - route 안에 있는 또 다른 route
 - 탭을 만들 때 유용
 
-```
+```TypeScript
 // chart.tsx
 <Switch>
     <Route path={`/${coinId}/price`}>
@@ -259,7 +259,7 @@ state가 생성되려면 Home 화면을 먼저 열어야 하기 때문에 아래
 url이 /:coinId/price일 경우에는 아래처럼 object 값을 받지만 
 url이 다를 경우에는 null
 
-```
+```TypeScript
 import { useParams, useRouteMatch } from "react-router";
 
 const priceMatch = useRouteMatch("/:coinId/price");
@@ -285,7 +285,8 @@ $ npm i react-query
 <br>
 
 QueryClientProvider 하위에 있는 모든 컴포넌트에서는 queryClient 접근 가능 
-```
+
+```TypeScript
  const queryClient = new QueryClient()
  
  export default function App() {
@@ -299,7 +300,7 @@ QueryClientProvider 하위에 있는 모든 컴포넌트에서는 queryClient �
 
 <br>
 
-```
+```TypeScript
 // index.tsx
 const queryClient = new QueryClient()
 
@@ -323,7 +324,7 @@ useQuery는 아래와 같이 사용한다. useQuery()는 isLoading이라는 bool
 
 아래는 기존에 개발한 코드
 
-```
+```TypeScript
 // Coins.tsx
 const [coins, setCoins] = useState<CoinInterface[]>([]);
 const [loading, setLoading] = useState(true);
@@ -343,7 +344,7 @@ useEffect(() => {
 
 useQuery()를 사용하면 위 코드를 모두 대체할 수 있다
 
-```
+```TypeScript
 // fetchCoins()는 api.ts 파일에 있음
 const { isLoading, data } = useQuery<ICoin[]>("allCoins", fetchCoins)
 ```
@@ -353,7 +354,7 @@ const { isLoading, data } = useQuery<ICoin[]>("allCoins", fetchCoins)
 ## 13. React Query Devtools
 React Query에 있는 devtools을 import 해오면 캐시에 있는 query를 볼 수 있다.
 
-```
+```TypeScript
 // App.tsx
 import { ReactQueryDevtools } from "react-query/devtools"
 
@@ -371,7 +372,8 @@ function App() {
 
 <br>
 useQuery() hook을 쓰는 방법은 첫번째 argument로 unique한 key를 주고, 두번째 argument는 fetcher 함수, 세번째는 옵션 object를 줄 수 있는데, refetchInterval 등의 값을 설정할 수 있다.
-```
+
+```TypeScript
 // coin.tsx
 const { isLoading: tickersLoading, data: tickersData } = useQuery<PriceData>(
     ["ticker", coinId], 
@@ -407,7 +409,7 @@ $ npm i --save-dev @types/react-helmet
 
 <br>
 
-```
+```TypeScript
 // Coin.tsx
     return (
       <Container>
@@ -435,7 +437,7 @@ $ npm i --save-dev @types/react-helmet
 - index.tsx에서는 state를 구현할 수 없으므로 <ThemeProvider />를 App.tsx로 옮긴다
 - commit history: https://github.com/yoojh9/react-master/commit/b3125174872283e84fadf11265925d4bf733414b
 
-```
+```TypeScript
 // App.tsx
 function App() {
   const [isDark, setIsDark] = useState(false);
@@ -460,7 +462,7 @@ function App() {
 - '코인' 타이틀 옆에 theme 토글 버튼을 두고 싶으면, App.tsx에서 isDark state를 변경하는 toggleDark() 함수를 App -> Router -> Coins 컴포넌트까지 Props로 보내야 함
 - 아래에서 이루어진 작업은 https://github.com/yoojh9/react-master/commit/918034815d346e2be79bce11096d41b27c1b1bd7 에서 볼 수 있음.
 
-```
+```TypeScript
 //App.tsx
 function App() {
   const [isDark, setIsDark] = useState(false);
@@ -481,7 +483,7 @@ function App() {
 
 <br>
 
-```
+```TypeScript
 // Router.tsx
 interface IRouterProps {
     toggleDark: () => void
@@ -504,7 +506,7 @@ function Router({ toggleDark }: IRouterProps) {
 
 <br>
 
-```
+```TypeScript
 // Coins.tsx
 interface ICoinsProps {
     toggleDark: () => void
@@ -532,7 +534,7 @@ function Coins({ toggleDark }: ICoinsProps) {
 - 또한 Chart 컴포넌트에도 현재 theme 정보를 알려줘야 하므로, isDark state를 넘겨줘야 함.
 - App.tsx -> Router.tsx -> Coin.tsx -> Chart.tsx
 
-```
+```TypeScript
 // App.tsx
 function App() {
   const [isDark, setIsDark] = useState(false);
@@ -554,7 +556,7 @@ function App() {
 
 <br>
 
-```
+```TypeScript
 // Router.tsx
 interface IRouterProps {
     toggleDark: () => void
@@ -579,7 +581,7 @@ function Router({ toggleDark, isDark }: IRouterProps) {
 
 <br>
 
-```
+```TypeScript
 // Coin.tsx
 
 interface ICoinProps {
@@ -603,7 +605,7 @@ function Coin({ isDark }: ICoinProps) {
 
 <br>
 
-```
+```TypeScript
 // Chart.tsx
 interface ChartProps {
     coinId: string;
@@ -631,7 +633,7 @@ $ npm install recoil
 
 #### (2) index.tsx에서 컴포넌트를 \<RecoilRoot\/\>로 감싼다. (QueryClientProvider와 비슷)
 
-```
+```TypeScript
 // index.tsx
 
 ReactDOM.render(
@@ -650,7 +652,7 @@ ReactDOM.render(
 
 #### (3) atoms.ts 파일 생성
 
-```
+```TypeScript
 // atoms.ts
 
 import { atom } from "recoil";
@@ -666,7 +668,7 @@ export const isDarkAtom = atom({
 #### (4) Recoil Atom 값 사용하기
 - state가 필요한 컴포넌트에서 useRecoilValue() 함수를 호출한다.
 
-```
+```TypeScript
 // App.tsx
   const isDark = useRecoilValue(isDarkAtom);
 
@@ -678,7 +680,7 @@ export const isDarkAtom = atom({
 - atom의 value를 감지하기 위해서는 useRecoilValue()라는 hook을 쓴다
 - value를 변경하기 위해서는 useSetRecoilState()를 사용한다.
 
-```
+```TypeScript
 function Coins() {
     const setDarkAtom = useSetRecoilState(isDarkAtom);
     const toggleDarkAtom = () => setDarkAtom(prev => !prev)
