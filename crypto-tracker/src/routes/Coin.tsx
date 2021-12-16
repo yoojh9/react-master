@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import { useParams, useRouteMatch } from "react-router";
 import { Switch, Route, useLocation, Link } from "react-router-dom";
@@ -146,8 +145,8 @@ function Coin() {
     // const [priceInfo, setPriceInfo] = useState<PriceData>();
     const priceMatch = useRouteMatch("/:coinId/price");
     const chartMatch = useRouteMatch("/:coinId/chart");
-    const {isLoading: infoLoading, data: infoData} = useQuery<InfoData>(["info", coinId], () => fetchCoinInfo(coinId));
-    const {isLoading: tickersLoading, data:tickersData} = useQuery<PriceData>(["ticker", coinId], () => fetchCoinTickers(coinId));
+    const { isLoading: infoLoading, data: infoData } = useQuery<InfoData>(["info", coinId], () => fetchCoinInfo(coinId));
+    const { isLoading: tickersLoading, data: tickersData } = useQuery<PriceData>(["ticker", coinId], () => fetchCoinTickers(coinId));
     /*
     useEffect(() => {
         (async () => {
@@ -213,11 +212,11 @@ function Coin() {
 
 
                     <Switch>
-                        <Route path={`/${coinId}/price`}>
+                        <Route path={`/:coinId/price`}>
                             <Price />
                         </Route>
-                        <Route path={`/${coinId}/chart`}>
-                            <Chart />
+                        <Route path={`/:coinId/chart`}>
+                            <Chart coinId={coinId} />
                         </Route>
                     </Switch>
                 </>
