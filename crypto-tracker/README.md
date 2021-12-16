@@ -458,6 +458,7 @@ function App() {
 <br>
 
 - '코인' 타이틀 옆에 theme 토글 버튼을 두고 싶으면, App.tsx에서 isDark state를 변경하는 toggleDark() 함수를 App -> Router -> Coins 컴포넌트까지 Props로 보내야 함
+- 아래에서 이루어진 작업은 https://github.com/yoojh9/react-master/commit/918034815d346e2be79bce11096d41b27c1b1bd7 에서 볼 수 있음.
 
 ```
 //App.tsx
