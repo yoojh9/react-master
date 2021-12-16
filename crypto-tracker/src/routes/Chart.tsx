@@ -28,7 +28,7 @@ function Chart({ coinId }: ChartProps) {
                     series={[
                         {
                             name: 'price',
-                            data: data?.map(price => Math.floor(price.close)),
+                            data: data?.map(price => price.close),
                         }
                     ]}
                     options={{
@@ -61,6 +61,24 @@ function Chart({ coinId }: ChartProps) {
                                     day: 'MMM dd',
                                     hour: 'HH:mm'
                                 }
+                            }
+                        },
+                        yaxis: {
+                            labels: {
+                                formatter: value => `$ ${Math.floor(value)}`
+                            }
+                        },
+                        fill: {
+                            type: 'gradient',
+                            gradient: {
+                                gradientToColors: ["#0be881"],
+                                stops: [0, 100],
+                            },
+                        },
+                        colors: ["#74b9ff"],
+                        tooltip: {
+                            y: {
+                                formatter: value => `$ ${value.toFixed(2)}`
                             }
                         },
                         labels: data?.map(v => v.time_close)
