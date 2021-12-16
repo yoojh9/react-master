@@ -663,7 +663,8 @@ export const isDarkAtom = atom({
 
 <br>
 
-#### (4) state가 필요한 컴포넌트에서 useRecoilValue() 함수를 호출한다.
+#### (4) Recoil Atom 값 사용하기
+- state가 필요한 컴포넌트에서 useRecoilValue() 함수를 호출한다.
 
 ```
 // App.tsx
@@ -673,7 +674,7 @@ export const isDarkAtom = atom({
 
 <br>
 
-### 3) Recoil atom 값 변경하기
+#### (5)) Recoil atom 값 변경하기
 - atom의 value를 감지하기 위해서는 useRecoilValue()라는 hook을 쓴다
 - value를 변경하기 위해서는 useSetRecoilState()를 사용한다.
 
