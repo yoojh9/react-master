@@ -4,7 +4,7 @@
 
 ### 1. Pseudo Selector
 
-```
+```TypeScript
 const Box = styled.div`
   height: 200px;
   width: 200px;
@@ -43,7 +43,7 @@ function App() {
 
 이렇게 작성하면 span 외에 다른 태그가 와도 스타일이 적용됨. 
 
-```
+```TypeScript
 const Emoji = styled.span`
   font-size: 36px;
 `;
