@@ -149,14 +149,14 @@ function ToDoList() {
 }
 ```
 
-<br><br>
+<br>
 
 ## 2) 정규식
 - 정규식 테스트 사이트: https://www.regexpal.com/
 - /^[A-Za-z0-9._%+-]+@naver.com$/
 - 완성된 코드는 다음과 같다. https://github.com/yoojh9/react-master/blob/a7550c0d45ef9e9800e4dc5916d441cb8cd25512/todo-app/src/TodoList.tsx
 
-<br><br>
+<br>
 
 ## 3) custom validation
 - react-hook-form의 setError는 특정한 에러를 발생시키게 해준다.
@@ -199,3 +199,8 @@ interface IForm {
 ```
 
 - react-hook-form 완료: https://github.com/yoojh9/react-master/blob/3009cac3c8b605593cf903b8abd68d99147e8299/todo-app/src/TodoList.tsx
+
+<br><br>
+
+
+# 2. Recoil
