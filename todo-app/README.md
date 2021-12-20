@@ -204,3 +204,7 @@ interface IForm {
 
 
 # 2. Recoil
+- Recoil 사용: https://github.com/yoojh9/react-master/blob/b84ccca71e8a3b8d2925adc3052d93dafc0b7da5/todo-app/src/components/TodoList.tsx
+
+- Refactoring: 
+
