@@ -206,5 +206,11 @@ interface IForm {
 # 2. Recoil
 - Recoil 사용: https://github.com/yoojh9/react-master/blob/b84ccca71e8a3b8d2925adc3052d93dafc0b7da5/todo-app/src/components/TodoList.tsx
 
-- Refactoring: 
+- Refactoring: https://github.com/yoojh9/react-master/commit/d551c53b7ff9d83bd1e74d0f14db70e19113f904
 
+<br>
+
+## 1) To Do 수정하기
+- find to do by id
+- get index
+- 새로운 toDo를 만들어서 기존 toDo에 업데이트 한다.
