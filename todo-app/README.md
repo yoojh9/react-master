@@ -149,5 +149,9 @@ function ToDoList() {
 }
 ```
 
+<br><br>
 
+# 2. 정규식
+- 정규식 테스트 사이트: https://www.regexpal.com/
+- /^[A-Za-z0-9._%+-]+@naver.com$/
 
