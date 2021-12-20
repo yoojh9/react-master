@@ -151,7 +151,50 @@ function ToDoList() {
 
 <br><br>
 
-# 2. 정규식
+## 2) 정규식
 - 정규식 테스트 사이트: https://www.regexpal.com/
 - /^[A-Za-z0-9._%+-]+@naver.com$/
+- 완성된 코드는 다음과 같다. https://github.com/yoojh9/react-master/blob/a7550c0d45ef9e9800e4dc5916d441cb8cd25512/todo-app/src/TodoList.tsx
+
+<br><br>
+
+## 3) custom validation
+- react-hook-form의 setError는 특정한 에러를 발생시키게 해준다.
+
+```TypeScript
+const onValid = (data: IForm) => {
+    console.log(data);
+    if (data.password !== data.password1) {
+        setError("password1", { message: "Password are not the same" })
+    }
+}
+```
+
+- 하지만 setError는 IForm에 있는 옵션만 나오므로 커스텀 에러를 지정하기 위해서는 IForm 인터페이스 항목을 하나 더 추가한다.
+
+```TypeScript
+interface IForm {
+    email: string
+    firstName: string
+    lastName: string
+    userName: string
+    password: string
+    password1: string
+    extraError?: string
+}
+
+<span>{errors.extraError?.message}</span>
+```
+
+- input 태그에 validate를 직접 이용할 수도 있다.
+
+```TypeScript
+<input {...register("firstName", {
+    required: "write here",
+    validate: {
+        noNico: (value) => value.includes("nico") ? "no nicos allowed" : true,
+        noNick: (value) => value.includes("nick") ? "no nicks allowed" : true
+    }
+})}
+```
 
