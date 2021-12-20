@@ -214,3 +214,69 @@ interface IForm {
 - find to do by id
 - get index
 - 새로운 toDo를 만들어서 기존 toDo에 업데이트 한다.
+- https://github.com/yoojh9/react-master/commit/371d1fadfdb20d175cbc15520fde5765db629bb5
+
+```TypeScript
+import React from "react";
+import { useSetRecoilState } from "recoil";
+import { IToDo, toDoState } from "../atoms";
+
+
+function ToDo({ text, category, id }: IToDo) {
+    const setToDos = useSetRecoilState(toDoState);
+
+    const onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+        console.log("i wanna go to ", event.currentTarget.name);
+        const { currentTarget: { name } } = event;
+
+        setToDos(oldToDos => {
+            const targetIndex = oldToDos.findIndex(todo => todo.id === id)
+            const oldToDo = oldToDos[targetIndex];
+            const newToDo = { text, id, category: name as any };
+            console.log(oldToDo, newToDo);
+            console.log(targetIndex);
+            console.log("replace the to do in the index ", targetIndex, "with", newToDo);
+
+            return [
+                ...oldToDos.slice(0, targetIndex), newToDo, ...oldToDos.slice(targetIndex + 1),
+            ];
+        });
+    }
+    return (
+        <li>
+            <span>{text}</span>
+            {category !== "DOING" && <button name="DOING" onClick={onClick}>Doing</button>}
+            {category !== "TO_DO" && <button name="TO_DO" onClick={onClick}>To Do</button>}
+            {category !== "DONE" && <button name="DONE" onClick={onClick}>Done</button>}
+        </li>
+    );
+}
+
+export default ToDo;
+```
+
+<br>
+
+## 2) Selector
+- Selector는 파생된 상태(derived state)의 일부를 나타낸다. 파생된 상태는 상태의 변화다. 파생된 상태를 어떤 방법으로든 주어진 상태를 수정하는 순수 함수에 전달된 상태의 결과물로 생각할 수 있다.
+- 현재 우리가 만든 toDoState에는 category와 상관없이 TO_DO이든, Doing이든, Done이든 모든 데이터가 섞여있다. selector를 이용하면 이 todo들을 각각의 category 별로 분류할 수 있다.
+- selector는 atom의 output을 변형시키는 도구이다.
+
+```TypeScript
+// atom.ts
+export const toDoSelector = selector({
+    key: "toDoSelector",
+    get: ({ get }) => {
+        const toDos = get(toDoState);   // get()을 통해 state를 가져올 수 있음
+        return [
+            toDos.filter(todo => todo.category === "TO_DO"),
+            toDos.filter(todo => todo.category === "DOING"),
+            toDos.filter(todo => todo.category === "DONE")
+        ]
+    }
+})
+
+// ToDoList.tsx
+const [toDos, doing, done] = useRecoilValue(toDoSelector);
+
+```
