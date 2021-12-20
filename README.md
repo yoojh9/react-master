@@ -53,3 +53,11 @@ Styled Components 사용 방법
 
 ### 2) todo-app
  - react-hook-form
+   - register()
+   - watch()
+   - handleSubmit()
+   - formState
+ - Recoil
+   - useRecoilState(), useSetRecoilState(), useRecoilValue()
+   - Selector
+   
