@@ -259,8 +259,10 @@ export default ToDo;
 
 ## 2) Selector
 - Selector는 파생된 상태(derived state)의 일부를 나타낸다. 파생된 상태는 상태의 변화다. 파생된 상태를 어떤 방법으로든 주어진 상태를 수정하는 순수 함수에 전달된 상태의 결과물로 생각할 수 있다.
-- 현재 우리가 만든 toDoState에는 category와 상관없이 TO_DO이든, Doing이든, Done이든 모든 데이터가 섞여있다. selector를 이용하면 이 todo들을 각각의 category 별로 분류할 수 있다.
 - selector는 atom의 output을 변형시키는 도구이다.
+- atom에 데이터를 모아두고, selector로 데이터를 변형할 수 있음
+
+- 현재 우리가 만든 toDoState에는 category와 상관없이 TO_DO이든, Doing이든, Done이든 모든 데이터가 섞여있다. selector를 이용하면 이 todo들을 각각의 category 별로 분류할 수 있다.
 
 ```TypeScript
 // atom.ts
@@ -280,3 +282,6 @@ export const toDoSelector = selector({
 const [toDos, doing, done] = useRecoilValue(toDoSelector);
 
 ```
+
+- https://github.com/yoojh9/react-master/commit/b0c8e2685b8b9864e4029eaf566fbf0ecaefe988
+
