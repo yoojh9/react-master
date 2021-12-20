@@ -285,3 +285,4 @@ const [toDos, doing, done] = useRecoilValue(toDoSelector);
 
 - https://github.com/yoojh9/react-master/commit/b0c8e2685b8b9864e4029eaf566fbf0ecaefe988
 
+- selectbox로 category 선택하고 해당 category에 맞는 아이템만 보여주기: https://github.com/yoojh9/react-master/commit/00d0fe4ca8aa514b3d0447629bd2fdf1f2e78225
