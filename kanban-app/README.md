@@ -1,6 +1,6 @@
 # Kanban App
 
-## 1. drag and drop
+## 1. react-beautiful-dnd: drag and drop
 - react-beautiful-dnd 라이브러리 사용
 - https://www.npmjs.com/package/react-beautiful-dnd
 - https://github.com/atlassian/react-beautiful-dnd
@@ -12,7 +12,7 @@ $ npm i --save-dev @types/react-beautiful-dnd
 
 ### 1) 용어 설명
 
-<img src='./drag_and_drop.gif' width="150px" />
+<img src='./drag_and_drop.gif' width="200px" />
 
 <br>
 
@@ -83,6 +83,7 @@ export interface DraggableProvided {
 <br><br>
 
 드래그 앤 드롭이 가능하게 적용한 코드는 아래와 같다. (reordering은 아직 적용 안됨)
+https://github.com/yoojh9/react-master/commit/51a600f65daae077bbd533020aa5c838da01a3ce
 
 ```TypeScript
 function App() {
