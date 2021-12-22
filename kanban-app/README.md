@@ -205,3 +205,26 @@ onDragEnd는 어떤 일이 일어났는지에 대한 정보로 많은 arguments�
     console.log('drag is finished')
   }
 ```
+
+<br>
+
+### 1) Performance
+현재 Reordering 시 모든 리스트가 리렌더링 되어 깜빡거리는 현상이 나타남.
+- State가 변하면 해당 Component의 모든 children이 다시 렌더링 됨
+- parent가 새로고침 되면 child도 새로고침 됨
+- 만약 큰 parent component의 state를 바꾼다면 children도 다 re rendering 되어야 하고 이렇게 되면 앱도 느려질 수 있다. 가끔은 이 기능이 필요하지 않을 수도 있음
+- 이럴때 필요한게 **react memo**이다.
+
+<br><br>
+
+## 3. React Memo
+- React에게 prop이 바뀌지 않는다면 이 Component는 렌더링 하지 말라고 알려 준다 
+- React.memo는 prop이 바뀐 component만 렌더링 한다. 즉 위의 Reordering은 모든 컴포넌트가 아닌 변경된 컴포넌트들만 렌더링 됨
+
+```TypeScript
+export default DraggableCard;
+
+// 아래처럼 작성하면 됨
+export default React.memo(DraggableCard);
+```
+
