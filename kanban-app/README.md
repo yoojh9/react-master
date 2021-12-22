@@ -18,6 +18,8 @@ $ npm i --save-dev @types/react-beautiful-dnd
 
 - DragDropContext
     - 기본적으로 드래그 앤 드랍을 가능하게 하고 싶은 앱의 한 부분이다. 
+    - onDragEnd 프로퍼티를 가지고 있음.
+    - onDragEnd(): 드래그가 끝날 때 실행되는 함수
     - https://github.com/atlassian/react-beautiful-dnd/blob/HEAD/docs/api/drag-drop-context.md
 - Droppable
     - 드랍 할 수 있는 영역을 의미한다.
@@ -154,4 +156,52 @@ function App() {
     </Board>
 )}
 </Droppable>
+```
+
+<br>
+
+### 5) onDragEnd
+onDragEnd는 어떤 일이 일어났는지에 대한 정보로 많은 arguments를 준다. 
+
+```json
+{
+    "draggableId": "b",
+    "type": "DEFAULT",
+    "source": {
+        "index": 1,
+        "droppableId": "one" // 같은 보드
+    },
+    "reason": "DROP",
+    "mode": "FLUID",
+    "destination": {
+        "droppableId": "one",
+        "index": 0
+    },
+    "combine": null
+}
+```
+
+<br><br>
+
+## 2. Reordering
+- splice(start, ?deleteCount. ...items) 사용
+- splice는 배열에 변화(mutation)를 일으킴.
+- reordering이 작용하려면 draggable의 key와 draggableId가 서로 같아야 함
+-
+
+```TypeScript
+  const [toDos, setTodos] = useRecoilState(toDoState);
+
+  const onDragEnd = ({ draggableId, destination, source }: DropResult) => {
+    if (!destination) return;
+    setTodos(oldTodos => {
+      const copyToDos = [...oldTodos];
+      // 1) Delete item on source.index
+      copyToDos.splice(source.index, 1);
+      // 2) Put back the item on the destination.index
+      copyToDos.splice(destination?.index, 0, draggableId)
+      return copyToDos;
+    })
+    console.log('drag is finished')
+  }
 ```
