@@ -163,7 +163,7 @@ function App() {
 ### 5) onDragEnd
 onDragEnd는 어떤 일이 일어났는지에 대한 정보로 많은 arguments를 준다. 
 
-```json
+```TypeScript
 {
     "draggableId": "b",
     "type": "DEFAULT",
