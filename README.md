@@ -65,14 +65,14 @@ Styled Components 사용 방법
  
  ### 3) [recoil-test](https://github.com/yoojh9/react-master/tree/main/recoil-test)
  - Recoil
-  - atom
-  - selector (get/set) 
+   - atom
+   - selector (get/set) 
 
  <br>
 
  ### 4) [Kanban-app](https://github.com/yoojh9/react-master/tree/main/kanban-app)
  - react-beautiful-dnd
-  - drag & drop
+   - drag & drop
  - reordering
-  - splice()
+   - splice()
  
