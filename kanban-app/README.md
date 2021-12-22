@@ -1,6 +1,8 @@
 # Kanban App
 
-## 1. react-beautiful-dnd: drag and drop
+<br>
+
+# 1. react-beautiful-dnd: drag and drop
 - react-beautiful-dnd 라이브러리 사용
 - https://www.npmjs.com/package/react-beautiful-dnd
 - https://github.com/atlassian/react-beautiful-dnd
@@ -183,7 +185,7 @@ onDragEnd는 어떤 일이 일어났는지에 대한 정보로 많은 arguments�
 
 <br><br>
 
-## 2. Reordering
+# 2. Reordering
 - splice(start, ?deleteCount. ...items) 사용
 - splice는 배열에 변화(mutation)를 일으킴.
 - reordering이 작용하려면 draggable의 key와 draggableId가 서로 같아야 함
@@ -217,7 +219,7 @@ onDragEnd는 어떤 일이 일어났는지에 대한 정보로 많은 arguments�
 
 <br><br>
 
-## 3. React Memo
+# 3. React Memo
 - React에게 prop이 바뀌지 않는다면 이 Component는 렌더링 하지 말라고 알려 준다 
 - React.memo는 prop이 바뀐 component만 렌더링 한다. 즉 위의 Reordering은 모든 컴포넌트가 아닌 변경된 컴포넌트들만 렌더링 됨
 
