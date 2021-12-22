@@ -187,7 +187,7 @@ onDragEnd는 어떤 일이 일어났는지에 대한 정보로 많은 arguments�
 - splice(start, ?deleteCount. ...items) 사용
 - splice는 배열에 변화(mutation)를 일으킴.
 - reordering이 작용하려면 draggable의 key와 draggableId가 서로 같아야 함
--
+- https://github.com/yoojh9/react-master/commit/185acbedc82b942951189291a66e0ea4436b2929
 
 ```TypeScript
   const [toDos, setTodos] = useRecoilState(toDoState);
