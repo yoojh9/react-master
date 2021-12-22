@@ -21,6 +21,9 @@ export const hourSelector = selector({
 });
 ```
 
+<br><br>
+
+
 ### 1) get()
 - get()을 통해 atom으로 지정한 state 값을 가져올 수 있음
 
@@ -51,9 +54,9 @@ export const hourSelector = selector<number>({
 });
 ```
 
----
 
-### ※ string -> number 형 변환
+
+#### ※ string -> number 형 변환
 
 ```TypeScript
 +"1"    // number 1
