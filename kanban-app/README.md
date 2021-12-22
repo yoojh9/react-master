@@ -125,3 +125,33 @@ function App() {
   );
 }
 ```
+
+<br>
+ 
+### 4) drag and drop 시 Droppable 영역 크기 유지하고 싶다면?
+- Droppable의 provided 객체 중 placeholder를 이용한다.
+- \{provided.placeholder\}
+
+```TypeScript
+<Droppable droppableId='one'>
+{(provided) => (
+    <Board
+    ref={provided.innerRef}
+    {...provided.droppableProps}>
+    {toDos.map((toDo, index) =>
+        <Draggable draggableId={toDo} index={index}>
+        {(provided) =>
+            <Card
+            ref={provided.innerRef}
+            {...provided.draggableProps}
+            {...provided.dragHandleProps}
+            >
+            {toDo}
+            </Card>}
+        </Draggable>
+    )}
+    {provided.placeholder}
+    </Board>
+)}
+</Droppable>
+```
