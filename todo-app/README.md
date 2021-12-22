@@ -270,11 +270,9 @@ export const toDoSelector = selector({
     key: "toDoSelector",
     get: ({ get }) => {
         const toDos = get(toDoState);   // get()을 통해 state를 가져올 수 있음
-        return [
-            toDos.filter(todo => todo.category === "TO_DO"),
-            toDos.filter(todo => todo.category === "DOING"),
-            toDos.filter(todo => todo.category === "DONE")
-        ]
+        const category = get(categoryState);
+        console.log('category: ', category)
+        return toDos.filter(todo => todo.category === category)
     }
 })
 
