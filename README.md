@@ -67,3 +67,12 @@ Styled Components 사용 방법
  - Recoil
   - atom
   - selector (get/set) 
+
+ <br>
+
+ ### 4) [Kanban-app](https://github.com/yoojh9/react-master/tree/main/kanban-app)
+ - react-beautiful-dnd
+  - drag & drop
+ - reordering
+  - splice()
+ 
