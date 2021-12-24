@@ -185,11 +185,12 @@ onDragEnd는 어떤 일이 일어났는지에 대한 정보로 많은 arguments�
 
 <br>
 
-### 6. Snapshot 
+### 6) droppable > Snapshot 
  - isDraggingOver: 유저가 board 위로 드래그 해서 들어오고 있는지를 알려줄 수 있음
  - draggingFromTHisWhith: 해당 board로부터 드래그를 시작했는지 알려줌
+ - https://github.com/yoojh9/react-master/commit/e620cd98345bbbd6cf6807c69d4928f2a92b867e
    
-```
+```TypeScript
 export interface DroppableStateSnapshot {
     isDraggingOver: boolean;
     draggingOverWith?: DraggableId | undefined;
@@ -197,6 +198,27 @@ export interface DroppableStateSnapshot {
     isUsingPlaceholder: boolean;
 }
 ```
+
+<br>
+
+### 7) draggable > Snapshot 
+
+```TypeScript
+export interface DraggableStateSnapshot {
+    isDragging: boolean;
+    isDropAnimating: boolean;
+    dropAnimation?: DropAnimation | undefined;
+    draggingOver?: DroppableId | undefined;
+    // the id of a draggable that you are combining with
+    combineWith?: DraggableId | undefined;
+    // a combine target is being dragged over by
+    combineTargetFor?: DraggableId | undefined;
+    // What type of movement is being done: 'FLUID' or 'SNAP'
+    mode?: MovementMode | undefined;
+}
+```
+
+
 
 <br><br>
 
