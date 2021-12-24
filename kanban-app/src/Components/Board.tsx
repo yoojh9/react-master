@@ -29,7 +29,7 @@ function Board({ toDos, boardId }: IBoardProps) {
             <Title>{boardId}</Title>
             <Droppable droppableId={boardId}>
                 {(provided) => (
-                    <div
+                    <div style={{ backgroundColor: 'lightgrey' }}
                         ref={provided.innerRef}
                         {...provided.droppableProps}>
                         {toDos.map((toDo, index) => {

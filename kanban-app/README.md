@@ -223,6 +223,10 @@ onDragEnd는 어떤 일이 일어났는지에 대한 정보로 많은 arguments�
 board가 3개 일 때 같은 board 안에서만 reordering 되도록 처리  
 https://github.com/yoojh9/react-master/commit/e0e8e46d154f6e41b4c2376bf1717c662f5a851d
 
+<br>
+
+### 3) Cross Board Movement
+board 간에도 reordering이 가능하도록 처리
 
 <br><br>
 
