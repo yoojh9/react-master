@@ -7,7 +7,7 @@ import Board from './Components/Board';
 const Wrapper = styled.div`
   display: flex;
   max-width: 680px;
-  width: 100%;
+  width: 100vw;
   margin: 0 auto;
   justify-content: center;
   align-items: center;
@@ -15,26 +15,34 @@ const Wrapper = styled.div`
 `;
 
 const Boards = styled.div`
-  display: grid;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start
   width: 100%;
   gap: 10px;
-  grid-template-columns: repeat(3, 1fr);
 `;
 
 
 function App() {
   const [toDos, setTodos] = useRecoilState(toDoState);
 
-  const onDragEnd = ({ draggableId, destination, source }: DropResult) => {
-    if (!destination) return;
-    // setTodos(oldTodos => {
-    //   const copyToDos = [...oldTodos];
-    //   // 1) Delete item on source.index
-    //   copyToDos.splice(source.index, 1);
-    //   // 2) Put back the item on the destination.index
-    //   copyToDos.splice(destination?.index, 0, draggableId)
-    //   return copyToDos;
-    // })
+  const onDragEnd = (info: DropResult) => {
+    console.log(info)
+    const { destination, draggableId, source } = info;
+    if (destination?.droppableId === source.droppableId) {
+      // same board move
+      setTodos(allBoards => {
+        console.log({ ...allBoards })
+        const boardCopy = [...allBoards[source.droppableId]]
+        boardCopy.splice(source.index, 1);
+        boardCopy.splice(destination.index, 0, draggableId);
+
+        return {
+          ...allBoards,
+          [source.droppableId]: boardCopy
+        };
+      })
+    }
     console.log('drag is finished')
   }
 
