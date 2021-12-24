@@ -261,8 +261,10 @@ https://github.com/yoojh9/react-master/commit/e0e8e46d154f6e41b4c2376bf1717c662f
 <br>
 
 ### 3) Cross Board Movement
-board 간에도 reordering이 가능하도록 처리  
-https://github.com/yoojh9/react-master/commit/36513ba94fab10bc6c6987b2cb87ce2eec136a8a
+- board 간에도 reordering이 가능하도록 처리 
+- todo 타입 string[] -> IToDo[]로 변경 
+
+https://github.com/yoojh9/react-master/commit/c62596e2b03d0fdcd6f36cb6eef05cead9f6f28f
 
 <br><br>
 
@@ -303,4 +305,19 @@ function Board() {
         </div>
     )
 }
+```
+
+<br><br>
+
+## 5. Add To Do
+
+이런식으로 하면 굳이 array push 작업이나 중복 되는지 체크하지 않아도 될 듯.
+
+```TypeScript
+setToDos((allBoards) => {
+    return {
+        ...allBoards,
+        [boardId]: [...allBoards[boardId], newTodo]
+    };
+})
 ```
