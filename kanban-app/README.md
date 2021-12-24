@@ -183,6 +183,21 @@ onDragEnd는 어떤 일이 일어났는지에 대한 정보로 많은 arguments�
 }
 ```
 
+<br>
+
+### 6. Snapshot 
+ - isDraggingOver: 유저가 board 위로 드래그 해서 들어오고 있는지를 알려줄 수 있음
+ - draggingFromTHisWhith: 해당 board로부터 드래그를 시작했는지 알려줌
+   
+```
+export interface DroppableStateSnapshot {
+    isDraggingOver: boolean;
+    draggingOverWith?: DraggableId | undefined;
+    draggingFromThisWith?: DraggableId | undefined;
+    isUsingPlaceholder: boolean;
+}
+```
+
 <br><br>
 
 # 2. Reordering
@@ -226,7 +241,8 @@ https://github.com/yoojh9/react-master/commit/e0e8e46d154f6e41b4c2376bf1717c662f
 <br>
 
 ### 3) Cross Board Movement
-board 간에도 reordering이 가능하도록 처리
+board 간에도 reordering이 가능하도록 처리  
+https://github.com/yoojh9/react-master/commit/36513ba94fab10bc6c6987b2cb87ce2eec136a8a
 
 <br><br>
 
