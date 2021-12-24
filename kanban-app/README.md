@@ -217,7 +217,15 @@ onDragEnd는 어떤 일이 일어났는지에 대한 정보로 많은 arguments�
 - 만약 큰 parent component의 state를 바꾼다면 children도 다 re rendering 되어야 하고 이렇게 되면 앱도 느려질 수 있다. 가끔은 이 기능이 필요하지 않을 수도 있음
 - 이럴때 필요한게 **react memo**이다.
 
+<br>
+
+### 2) Same Board Movement
+board가 3개 일 때 같은 board 안에서만 reordering 되도록 처리  
+https://github.com/yoojh9/react-master/commit/e0e8e46d154f6e41b4c2376bf1717c662f5a851d
+
+
 <br><br>
+
 
 # 3. React Memo
 - React에게 prop이 바뀌지 않는다면 이 Component는 렌더링 하지 말라고 알려 준다 
