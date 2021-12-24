@@ -218,8 +218,6 @@ export interface DraggableStateSnapshot {
 }
 ```
 
-
-
 <br><br>
 
 # 2. Reordering
@@ -280,3 +278,29 @@ export default DraggableCard;
 export default React.memo(DraggableCard);
 ```
 
+<br><br>
+
+## 4. reference / useRef()
+- react 코드를 이용해 HTML 요소를 지정하고, 가져올 수 있는 방법. 자바스크립트로부터 HTML 요소를 가져오고 수정하는 방법
+- reference는 react JS component를 통해서 HTML 요소를 가져올 수 있도록 함
+- **useRef()**: document.getElementById() 이런것과 유사하게 html 요소에 접근할 수 있음
+- 이렇게 자바스크립트와 React.js를 이용해 모든 HTML 메소드에 접근할 수 있음.
+- HTML method: https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement#methods
+
+```TypeScript
+function Board() {
+    const inputRef = useRef<HTMLInputElement>(null);
+    const onClick = () => {
+        inputRef.current?.focus();
+    }
+
+    
+    return (
+        <div>
+            <input ref={inputRef}>
+            <button onClick={onClick}>click me</button>
+
+        </div>
+    )
+}
+```
