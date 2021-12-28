@@ -26,25 +26,31 @@ const Box = styled(motion.div)`
 `;
 
 const boxVariants = {
-  invisible: {
-    x: 500,
-    opacity: 0,
-    scale: 0
-  },
-  visible: {
-    x: 0,
-    opacity: 1,
-    scale: 1,
-    transition: {
-      duration: 1,
+  entry: (back: boolean) => {
+    return {
+      x: back? -500 : 500,
+      opacity: 0,
+      scale: 0
     }
   },
-  exit: {
-    x: -500,
-    opacity: 0,
-    scale: 0,
-    transition: {
-      duration: 1,
+  center: (back: boolean) => {
+    return {
+      x: 0,
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 1,
+      }
+    }
+  },
+  exit: (back: boolean) =>{
+    return {
+      x: back? 500 : -500,
+      opacity: 0,
+      scale: 0,
+      transition: {
+        duration: 1,
+      }
     }
   }
 }
@@ -52,28 +58,34 @@ const boxVariants = {
 
 function App() {
   const [visible, setVisible] = useState(1);
-  const nextPlease = () => setVisible(prev => prev === 10 ? 10 : prev+1);
+  const [back, setBack] = useState(false);
+
+  const nextPlease = () => {
+    setVisible(prev => prev === 10 ? 10 : prev+1);
+    setBack(false);
+  }
+  const prevPlease = () => {
+    setVisible(prev => prev === 1 ? 1 : prev-1);
+    setBack(true);
+  }
 
 
   return (
     <Wrapper>
-      <AnimatePresence>
-        {
-          [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((number) => 
-            number === visible ? (
-              <Box 
-                variants={boxVariants} 
-                initial="invisible" 
-                animate="visible" 
-                exit="exit" 
-                key={number}>
-                  {number}
-              </Box>
-            ) : null
-          )
-        }
+      <AnimatePresence custom={back} >
+        <Box 
+          custom={back}
+          variants={boxVariants} 
+          initial="entry" 
+          animate="center" 
+          exit="exit" 
+          key={visible}
+          >
+            {visible}
+        </Box>
       </AnimatePresence> 
       <button onClick={nextPlease}>next</button>
+      <button onClick={prevPlease}>prev</button>
     </Wrapper>
   );
 }

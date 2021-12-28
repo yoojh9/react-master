@@ -397,3 +397,69 @@ function App() {
 - AnimatePresence의 딱 한가지 규칙은 visible한 상태여야 하고, AnimatePresence의 내부에는 condition(조건문)이 있어야 한다라는 점이다.
 - AnimatePresence는 내부에서 나타나거나 사라지는 게 있다면 그것을 animate 할 수 있게 해준다.
 - 코드: https://github.com/yoojh9/react-master/commit/c73c9ef1224d2c988018133f194c7ccae4e2b28b
+
+<br><br>
+
+# 8. Slide
+
+- AimatePresence를 사용하여 slider를 만들 수 있다.
+- 코드: https://github.com/yoojh9/react-master/commit/d2a5f87b16c53c47ce9a10994f5a99fe23cc19c9
+
+```TypeScript
+const boxVariants = {
+  invisible: {
+    x: 500,
+    opacity: 0,
+    scale: 0
+  },
+  visible: {
+    x: 0,
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 1,
+    }
+  },
+  exit: {
+    x: -500,
+    opacity: 0,
+    scale: 0,
+    transition: {
+      duration: 1,
+    }
+  }
+}
+
+
+function App() {
+  const [visible, setVisible] = useState(1);
+  const nextPlease = () => setVisible(prev => prev === 10 ? 10 : prev+1);
+  const prevPlease = () => setVisible(prev => prev === 1 ? 1 : prev-1);
+
+
+  return (
+    <Wrapper>
+      <AnimatePresence>
+        {
+          [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((number) =>
+            number === visible ? (
+              <Box
+                variants={boxVariants}
+                initial="invisible"
+                animate="visible"
+                exit="exit"
+                key={number}>
+                  {number}
+              </Box>
+            ) : null
+          )
+        }
+      </AnimatePresence>
+      <button onClick={nextPlease}>next</button>
+      <button onClick={prevPlease}>prev</button>
+    </Wrapper>
+  );
+}
+```
+
+- 위의 코드에서 문제가 있는데, prev 버튼을 누르면 next 버튼과 똑같이 오른쪽에서(x:500) 나타나서 왼쪽으로(x:-500) 사라진다. prev는 왼쪽에서 나타나서 오른쪽으로 사라지게 만들고 싶음.
