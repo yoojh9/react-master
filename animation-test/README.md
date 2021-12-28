@@ -285,4 +285,20 @@ function App() {
 </Wrapper>
 ```
 
-- 좌우 드래그 할 때마다 배경색 바꾸기: 
+- 좌우 드래그 할 때마다 배경색 바꾸기: https://github.com/yoojh9/react-master/commit/52774e701f235e64d38ee2024ba7b4ba5b1a66ee
+
+<br>
+
+### 3) useViewportScroll()
+- https://www.framer.com/docs/motionvalue/##useviewportscroll 
+- useViewportScroll()은 스크롤의 MotionValue를 넘겨준다.
+- useViewPortScroll()은 scrollX, scrollY, scrollXProgress, scrollYProgress 값을 리턴한다
+- scrollX, scrollY는 스크롤한 픽셀 값이고, scrollXProgress, scrollYProgress는 스크롤 한 범위 값이며 0 ~ 1 사이의 값을 갖는다.
+
+```TypeScript
+  const { scrollY, scrollYProgress } = useViewportScroll();
+
+  useEffect(() => {
+    scrollY.onChange(() => console.log(scrollY.get(), scrollYProgress.get()))
+  }, [scrollY, scrollYProgress])
+```

@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import { motion, useMotionValue, useTransform } from 'framer-motion';
+import { motion, useMotionValue, useTransform, useViewportScroll } from 'framer-motion';
 import { useEffect, useRef } from 'react';
 
 const Wrapper = styled(motion.div)`
-  height: 100vh;
+  height: 200vh;
   width: 100vw;
   display: flex;
   justify-content: center;
@@ -27,17 +27,27 @@ function App() {
     "linear-gradient(135deg, rgb(41, 144, 248), rgb(143, 217, 248))",
     "linear-gradient(135deg, rgb(116, 185, 255), rgb(223, 230, 233))",
     "linear-gradient(135deg, rgb(216, 234, 252), rgb(57, 123, 245))",
-  ])
+  ]);
+
+  const { scrollY, scrollYProgress } = useViewportScroll();
+  const scaleWithScroll = useTransform(scrollYProgress, [0, 1], [1, 5]);
 
   useEffect(() => {
     //x.onChange(() => console.log(x.get()))
-    scale.onChange(() => console.log(scale.get()))
-  }, [x])
+    //scale.onChange(() => console.log(scale.get()))
+    scrollY.onChange(() => console.log(scrollY.get(), scrollYProgress.get()))
+  }, [scrollY, scrollYProgress])
+
 
   return (
     <Wrapper style={{ background: gradient }}>
       <Box
-        style={{ x: x, rotate }}
+        style={{
+          x: x,
+          rotate,
+          //scale: scrollYProgress  // 0 ~ 1 사이라 변화가 한 눈에 보이지 않음..
+          scale: scaleWithScroll,
+        }}
         drag="x"
         dragSnapToOrigin
       />
