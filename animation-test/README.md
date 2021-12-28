@@ -273,6 +273,7 @@ function App() {
 ```
 
 - 실제로 왼쪽으로 드래그 하면 커지고, 오른쪽으로 드래그 하면 작아지는 scale을 적용하고 싶다면, style 속성에 scale 값을 넣어주어야 함
+- https://github.com/yoojh9/react-master/commit/66eff18269302a113d1251ec268406822bb4a501
 
 ```TypeScript
 <Wrapper>
@@ -283,3 +284,5 @@ function App() {
   />
 </Wrapper>
 ```
+
+- 좌우 드래그 할 때마다 배경색 바꾸기: 
