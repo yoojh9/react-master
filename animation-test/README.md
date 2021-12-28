@@ -127,8 +127,6 @@ function App() {
 
 <br><br>
 
----
-
 # 3. Transition
 
 ## 1) [Orchestration](https://www.framer.com/docs/transition/#orchestration)
@@ -181,8 +179,6 @@ const circleVariants = {
 
 <br><br>
 
----
-
 # 4. Gesture
 
 - https://www.framer.com/docs/gestures/
@@ -207,8 +203,6 @@ whileDrag={{ backgroundColor: 'rgba(129, 236, 236,1.0)' }}
 - drag2: https://github.com/yoojh9/react-master/commit/38d1fecc34411e618bb9901a781be4ae5f42690f
 
 <br><br>
-
----
 
 # 5. Motion Value
 
@@ -313,8 +307,6 @@ function App() {
 
 <br><br>
 
----
-
 # 6. SVG Animation
 
 - [fontawesome](https://fontawesome.com/): awesome한 SVG font들을 찾을 수 있음.
@@ -359,6 +351,7 @@ function App() {
 
 - 특정한 property의 transition 시간을 정할 수 있다.
 - 아래 예제는 default로는 duration: 5초이지만 fill 프로퍼티는 delay: 5초 후 실행된다.
+- 코드: https://github.com/yoojh9/react-master/commit/4553675fbba3a77f13090c190bf496e1f5391839
 
 ```TypeScript
   end: {
@@ -376,3 +369,30 @@ function App() {
     },
   }
 ```
+
+<br><br>
+
+# 7. AnimatePresence
+
+- https://www.framer.com/docs/animate-presence/
+- AnimatePresence는 Component인데, React 트리에서 컴포넌트가 제거될 때 제거되는 컴포넌트에 애니메이션 효과를 줄 수 있다.
+
+```TypeScript
+function App() {
+  const [showing, setShowing] = useState(false);
+  const toggleShowing = () => setShowing((prev) => !prev);
+
+  return (
+    <Wrapper>
+      <button onClick={toggleShowing}>Click</button>
+      {showing ? <Box/> : null}
+    </Wrapper>
+  );
+}
+```
+
+<br>
+
+- 위와 같은 코드가 있고, \<Box\> 컴포넌트가 사라질 때 에니메이션을 적용하고 싶다면 \<AnimatePresence\>를 사용한다.
+- AnimatePresence의 딱 한가지 규칙은 visible한 상태여야 하고, AnimatePresence의 내부에는 condition(조건문)이 있어야 한다라는 점이다.
+- AnimatePresence는 내부에서 나타나거나 사라지는 게 있다면 그것을 animate 할 수 있게 해준다.
