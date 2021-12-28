@@ -396,3 +396,4 @@ function App() {
 - 위와 같은 코드가 있고, \<Box\> 컴포넌트가 사라질 때 에니메이션을 적용하고 싶다면 \<AnimatePresence\>를 사용한다.
 - AnimatePresence의 딱 한가지 규칙은 visible한 상태여야 하고, AnimatePresence의 내부에는 condition(조건문)이 있어야 한다라는 점이다.
 - AnimatePresence는 내부에서 나타나거나 사라지는 게 있다면 그것을 animate 할 수 있게 해준다.
+- 코드: https://github.com/yoojh9/react-master/commit/c73c9ef1224d2c988018133f194c7ccae4e2b28b
