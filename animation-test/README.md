@@ -463,3 +463,17 @@ function App() {
 ```
 
 - 위의 코드에서 문제가 있는데, prev 버튼을 누르면 next 버튼과 똑같이 오른쪽에서(x:500) 나타나서 왼쪽으로(x:-500) 사라진다. prev는 왼쪽에서 나타나서 오른쪽으로 사라지게 만들고 싶음.
+
+<br>
+
+## 1) custom
+
+- custom은 variants에 데이터를 보낼 수 있게 해주는 property이다.
+- custom 값을 variants에 보내서 prev와 next 애니메이션을 구현할 수 있다.
+- 코드: https://github.com/yoojh9/react-master/commit/cf8da9412cf5c77f57a049c03719c024f09f143c
+
+<br>
+
+## 2) exitBeforeEnter
+
+현재 코드는 entry 애니메이션과 exit 애니메이션이 동시에 실행되는데, exitBeforeEnter 프로퍼티를 사용하면 exit 애니메이션이 끝난 후 다음 element들이 올 수 있게 해준다
