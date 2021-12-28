@@ -174,3 +174,21 @@ const circleVariants = {
 ### (2) staggerChildren
 - 자식 컴포넌트에 delay를 시차를 둘 수 있다.
 - **staggerChildren: 0.5** 이렇게만 작성하면 자동으로 첫번쨰 자식에 0.5, 두번째 자식 컴포넌트에 0.5*2, n번쨰 자식 컴포넌트에 0.5*n의 딜레이를 줄 수 있다.
+- https://github.com/yoojh9/react-master/commit/033cc9e3661749e25fd3ffd6ec2e456337ec41d9
+
+<br><br>
+
+---
+
+# 4. Gesture
+- whileHover
+- whileTap
+- drag
+- whileDrag
+    - backgroundColor: 'blue' 처럼 string 값을 넣으면 바로 변함
+    - rgba(129, 236, 236,1.0)와 같이 숫자값을 쓰면 Motion이 그 값을 알아서 animate 해주므로, 점진적으로 바뀌는 것처럼 보인다.
+```
+whileDrag={{ backgroundColor: 'rgba(129, 236, 236,1.0)' }}
+
+```
+  
