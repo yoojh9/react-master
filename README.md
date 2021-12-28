@@ -75,4 +75,11 @@ Styled Components 사용 방법
    - drag & drop
  - reordering
    - splice()
+ - React Memo
+ - useRef() / reference
+ 
+ <br>
+ 
+ ### 5) [animation-test](https://github.com/yoojh9/react-master/tree/main/animation-test)
+ - Framer Motion
  
