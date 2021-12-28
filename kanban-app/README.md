@@ -282,7 +282,7 @@ export default React.memo(DraggableCard);
 
 <br><br>
 
-## 4. reference / useRef()
+# 4. reference / useRef()
 - react 코드를 이용해 HTML 요소를 지정하고, 가져올 수 있는 방법. 자바스크립트로부터 HTML 요소를 가져오고 수정하는 방법
 - reference는 react JS component를 통해서 HTML 요소를 가져올 수 있도록 함
 - **useRef()**: document.getElementById() 이런것과 유사하게 html 요소에 접근할 수 있음
@@ -309,7 +309,7 @@ function Board() {
 
 <br><br>
 
-## 5. Add To Do
+# 5. Add To Do
 
 이런식으로 하면 굳이 array push 작업이나 중복 되는지 체크하지 않아도 될 듯.
 
