@@ -477,3 +477,5 @@ function App() {
 ## 2) exitBeforeEnter
 
 현재 코드는 entry 애니메이션과 exit 애니메이션이 동시에 실행되는데, exitBeforeEnter 프로퍼티를 사용하면 exit 애니메이션이 끝난 후 다음 element들이 올 수 있게 해준다
+
+- 코드: https://github.com/yoojh9/react-master/commit/ec57a4a5b6d4165d23f259200c3f168400f8c1a2
