@@ -230,10 +230,12 @@ function App() {
 
 <br>
 
+### 1) useMotionValue()
+
 - Motion 값 추적
     - Motion 값은 값이 변할 때마다 렌더링 되지 않으므로 console.log()는 한번만 실행된다
     - Motion 값의 변화를 추적하기 위해서는 useEffect()를 이용하여 onChange() 핸들러를 호출한다.
-
+- https://github.com/yoojh9/react-master/commit/017a8f903bcb0ce38d0822bdd8a55a7e3b55be73
 
 ```TypeScript
 function App() {
@@ -255,3 +257,29 @@ function App() {
 
 ```
 
+<br>
+
+### 2) useTransform()
+- useTransform\<unknown, number\>(value: MotionValue\<number\>, inputRange: InputRange, outputRange: number[], options?: TransformOptions\<number\> | undefined) 
+
+```TypeScript
+  const x = useMotionValue(0);  // -800 ~ 800 사이의 값
+  const scale = useTransform(x, [-800, 0, 800], [2, 1, 0.1]); 
+
+  useEffect(() => {
+    //x.onChange(() => console.log(x.get()))
+    scale.onChange(() => console.log(scale.get())) // 0.1 ~ 2 사이의 값이 출력 됨
+  }, [x])
+```
+
+- 실제로 왼쪽으로 드래그 하면 커지고, 오른쪽으로 드래그 하면 작아지는 scale을 적용하고 싶다면, style 속성에 scale 값을 넣어주어야 함
+
+```TypeScript
+<Wrapper>
+  <Box
+    style={{ x: x, scale: scale }}
+    drag="x"
+    dragSnapToOrigin
+  />
+</Wrapper>
+```
