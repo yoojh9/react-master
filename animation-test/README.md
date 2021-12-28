@@ -184,11 +184,23 @@ const circleVariants = {
 - whileHover
 - whileTap
 - drag
+    - 기본값으로는 상하좌우 모두 드래그 되지만, drag="x" 와 같이 지정하면 좌우로만 드래그 됨 
 - whileDrag
     - backgroundColor: 'blue' 처럼 string 값을 넣으면 바로 변함
     - rgba(129, 236, 236,1.0)와 같이 숫자값을 쓰면 Motion이 그 값을 알아서 animate 해주므로, 점진적으로 바뀌는 것처럼 보인다.
+- dragConstraints
+    - 드래깅이 허용될 수 있는 영역을 지정함.
+- dragSnapToOrigin
+    - 드래그 했다가 놓으면 원래의 위치로 돌아옴
+
 ```
 whileDrag={{ backgroundColor: 'rgba(129, 236, 236,1.0)' }}
 
 ```
+
+- drag: https://github.com/yoojh9/react-master/commit/0dde5e109a6018a46c371c0bb72a7b1ca0bce0e1  
+- drag2: 
   
+<br><br>
+
+---
