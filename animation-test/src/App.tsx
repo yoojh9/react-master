@@ -26,7 +26,14 @@ const svg = {
     fill: 'rgba(255, 255, 255, 1)',
     pathLength: 1,
     transition: {
-      duration: 5,
+      //duration: 5,
+      default: {
+        duration: 5,
+      },
+      fill: {
+        duration: 2, 
+        delay: 3,
+      }
     },
   }
 }

@@ -335,6 +335,9 @@ function App() {
 ```
 
 - SVG를 animate 하기 위해서는 path를 그냥 쓰는게 아니라 motion.path로 사용해야 한다.
+- 코드: https://github.com/yoojh9/react-master/commit/8493239182b18405ec5800e099c5de9f39da2ef3
+
+<br>
 
 ### 1) path 속성
 
@@ -342,8 +345,34 @@ function App() {
 - strokeWidth: 선 굵기
 - fill: 색
 
+<br>
+
 ### 2) pathLength
 
 - SVG가 가지고 있는 속성
 - 현재 우리 위치까지의 path의 길이
 - 모든 거리 계산을 스케일링하여, 총 길이를 지정할 수 있음.
+
+<br>
+
+### 3) property마다 각각 다른 transition 설정하기
+
+- 특정한 property의 transition 시간을 정할 수 있다.
+- 아래 예제는 default로는 duration: 5초이지만 fill 프로퍼티는 delay: 5초 후 실행된다.
+
+```TypeScript
+  end: {
+    fill: 'rgba(255, 255, 255, 1)',
+    pathLength: 1,
+    transition: {
+      //duration: 5,
+      default: {
+        duration: 5,
+      },
+      fill: {
+        duration: 2,
+        delay: 3,
+      }
+    },
+  }
+```
