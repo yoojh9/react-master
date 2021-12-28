@@ -181,6 +181,7 @@ const circleVariants = {
 ---
 
 # 4. Gesture
+- https://www.framer.com/docs/gestures/
 - whileHover
 - whileTap
 - drag
@@ -199,8 +200,58 @@ whileDrag={{ backgroundColor: 'rgba(129, 236, 236,1.0)' }}
 ```
 
 - drag: https://github.com/yoojh9/react-master/commit/0dde5e109a6018a46c371c0bb72a7b1ca0bce0e1  
-- drag2: 
+- drag2: https://github.com/yoojh9/react-master/commit/38d1fecc34411e618bb9901a781be4ae5f42690f
   
 <br><br>
 
 ---
+
+# 5. Motion Value
+- https://www.framer.com/docs/motionvalue/
+- 애니메이션 내의 수치를 트래킹 할 때 필요하다.
+- MontionValue는 업데이트 될 때 React Rendering Cycle(렌더링 사이클)을 발동시키지 않는다. 즉 MotionValue는 React의 State가 아니다.
+- 예) 드래그를 왼쪽으로 하면 배경색이 빨간색으로 바뀌고, 오른쪽으로 하면 배경색이 파란색으로 변함.
+
+```TypeScript
+function App() {
+  const x = useMotionValue(0);
+
+  return (
+    <Wrapper>
+      <Box
+        style={{ x: x }}
+        drag="x"
+        dragSnapToOrigin
+      />
+    </Wrapper>
+  );
+}
+```
+
+<br>
+
+- Motion 값 추적
+    - Motion 값은 값이 변할 때마다 렌더링 되지 않으므로 console.log()는 한번만 실행된다
+    - Motion 값의 변화를 추적하기 위해서는 useEffect()를 이용하여 onChange() 핸들러를 호출한다.
+
+
+```TypeScript
+function App() {
+  const x = useMotionValue(0);
+  console.log('rendering:', x);
+  useEffect(() => {
+    x.onChange(() => console.log(x.get()))
+  }, [x])
+  return (
+    <Wrapper>
+      <Box
+        style={{ x: x }}
+        drag="x"
+        dragSnapToOrigin
+      />
+    </Wrapper>
+  );
+}
+
+```
+
