@@ -43,7 +43,8 @@ function App() {
 
 # 2. Variants
 
-Variants를 사용하면 코드를 더 깔끔하게 유지할 수 있음
+- Variants를 사용하면 코드를 더 깔끔하게 유지할 수 있음  
+- https://github.com/yoojh9/react-master/commit/4da3b9892397bfc55c5e9643154257ad539bcf22
 
 ```TypeScript
 // Variants 사용 전
@@ -75,3 +76,101 @@ function App() {
 
 ```
 
+<br>
+
+- motion에서는 기본적으로 부모에 적용되어 있는 animation은 자식에 그대로 적용 됨. 아래처럼 적용된다고 보면 됨
+
+```TypeScript
+<Box variants={boxVariants} initial="start" animate="end">
+  <Circle initial="start" animate="end"/>
+  <Circle initial="start" animate="end"/>
+  <Circle initial="start" animate="end"/>
+  <Circle initial="start" animate="end"/>
+</Box>
+```
+
+<br>
+
+- Circle 컴포넌트는 initial과 animate 속성을 그대로 가져가므로, circleVariants를 만들경우 아래와 같이 작성할 수 있음.
+
+```TypeScript
+
+const circleVariants = {
+  start: {
+    scale: 0
+  },
+  end: {
+    scale: 1,
+    transition: {
+      type: "spring",
+      duration: 5,
+      bound: 0.8
+    }
+  }
+}
+
+function App() {
+  return (
+    <Wrapper>
+      <Box variants={boxVariants} initial="start" animate="end">
+        <Circle variants={circleVariants} />
+        <Circle variants={circleVariants} />
+        <Circle variants={circleVariants} />
+        <Circle variants={circleVariants} />
+      </Box>
+    </Wrapper>
+  );
+}
+
+```
+
+<br><br>
+
+---
+
+# 3. Transition
+
+## 1) [Orchestration](https://www.framer.com/docs/transition/#orchestration)
+
+<br>
+
+### (1) delayChildren
+- When using variants, children animations will start after this duration 
+- 자식 컴포넌트에 직접 delay를 주지 않고, 부모 컴포넌트의 transitaion에 delayChildren 속성으로 줄 수 있음
+
+```TypeScript
+const boxVariants = {
+  start: {
+    opacity: 0,
+    scale: 0,
+  },
+  end: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      type: "spring",
+      duration: 2,
+      bounce: 0.5,
+      delayChildren: 2,
+    }
+  }
+}
+
+const circleVariants = {
+  start: {
+    opacity: 0
+  },
+  end: {
+    opacity: 1,
+    transition: {
+      // delay: 2,
+    }
+  }
+}
+```
+
+<br>
+
+### (2) staggerChildren
+- 자식 컴포넌트에 delay를 시차를 둘 수 있다.
+- **staggerChildren: 0.5** 이렇게만 작성하면 자동으로 첫번쨰 자식에 0.5, 두번째 자식 컴포넌트에 0.5*2, n번쨰 자식 컴포넌트에 0.5*n의 딜레이를 줄 수 있다.
