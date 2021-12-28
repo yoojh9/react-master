@@ -39,3 +39,39 @@ function App() {
 }
 ```
 
+<br><br>
+
+# 2. Variants
+
+Variants를 사용하면 코드를 더 깔끔하게 유지할 수 있음
+
+```TypeScript
+// Variants 사용 전
+function App() {
+  <Wrapper>
+    <Box
+      transition={{ type: "spring", bounce: 0.8, delay: 1 }}
+      initial={{ scale: 0 }} 
+      animate={{ rotateZ: 360, scale: 1 }} />
+  </Wrapper>
+}
+```
+
+<br>
+
+```TypeScript
+const myVars = {
+  start: { scale: 0 },
+  end: { rotateZ: 360, scale: 1 , transition: { type: "spring", bounce: 0.8, delay: 1 }}
+}
+
+function App() {
+  return (
+    <Wrapper>
+      <Box variants={myVars} initial="start" animate="end" />
+    </Wrapper>
+  );
+}
+
+```
+
