@@ -10,7 +10,7 @@ $ npx create-react-app react-typescript --template typescript
 타입스크립트는 기존 styled-components를 인식하지 못하므로 아래와 같이 추가로 명령어를 실행한다.
 
 ```
-$ npm install styled-component
+$ npm install styled-components
 $ npm install --save @types/styled-components
 ```
 
