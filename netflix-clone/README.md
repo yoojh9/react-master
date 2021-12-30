@@ -44,3 +44,27 @@ const Input = styled(motion.input)`
 ```
 
 - 현재는 검색 아이콘 이후에 input이 출력되는데, 검색 아이콘이랑 input이 겹쳐 보이게 하기 위해 position:absolute를 사용함
+- 코드: https://github.com/yoojh9/react-master/commit/6e381fadbdac37050dabd132829ad85458cf3648
+
+<br>
+
+### 4) useAnimation()
+
+- Motion Animation 함수 코드로 만들어보기
+
+```TypeScript
+const toggleSearch = () => {
+    if(searchOpen){
+        // trigger the close animation
+        inputAnimation.start({
+            scaleX: 0
+        });
+    } else {
+        // trigger the open animation
+        inputAnimation.start({
+            scaleX: 1
+        })
+    }
+    setSearchOpen(prev => !prev);
+}
+```
