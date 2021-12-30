@@ -25,3 +25,22 @@
 - 같은 도메인으로 이동시킬 때는 \<a\> 태그 말고 react-router-dom의 \<Link\> 태그를 사용한다.
 
 - **useRouteMatch()** : URL이 어느 라우팅에 위치하고 있는지 알려줌.
+
+- 코드: https://github.com/yoojh9/react-master/commit/d4de9db43d5b09c2457243374c506f21715b1c39
+
+<br>
+
+### 3) Animation Nav
+
+- **scaleX**: scaleX로 가로축 확장
+- **transform-origin**: 변화가 시작하는 위치
+
+- 아래처럼 transform-origin을 right center로 설정하면 input이 scaleX가 0->1로 될 때 중간에서 나오는게 아니라 오른쪽에서부터 나오는 것으로 보임.
+
+```TypeScript
+const Input = styled(motion.input)`
+    transform-origin: right center;
+`
+```
+
+- 현재는 검색 아이콘 이후에 input이 출력되는데, 검색 아이콘이랑 input이 겹쳐 보이게 하기 위해 position:absolute를 사용함
