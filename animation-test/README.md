@@ -545,6 +545,7 @@ function App() {
 
 - 위 이미지처럼 박스 클릭 시 해당 박스가 사라지고, 화면 중간에 오는 애니메이션을 만들고 싶다면, layoutId로 연결해주면 된다.
 - 아래 코드는 첫번째 박스 클릭 시 화면 중간에 박스가 새로 뜨는데 layoutId로 연결하여, 클릭 시 첫번째 박스는 사라지는 것처럼 보인다
+- 코드: https://github.com/yoojh9/react-master/commit/cb8b4a407cb0b9e786eddc052dbd017365f91fbd
 
 ```TypeScript
 function App() {
