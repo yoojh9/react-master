@@ -479,3 +479,32 @@ function App() {
 현재 코드는 entry 애니메이션과 exit 애니메이션이 동시에 실행되는데, exitBeforeEnter 프로퍼티를 사용하면 exit 애니메이션이 끝난 후 다음 element들이 올 수 있게 해준다
 
 - 코드: https://github.com/yoojh9/react-master/commit/ec57a4a5b6d4165d23f259200c3f168400f8c1a2
+
+<br><br>
+
+# 9. LayoutAnimation
+
+- Framer Motion은 무언가 외부의 힘에 의해 바뀐 것을 감지함
+- layout이라는 prop을 element에게 주면 그 element는 layout이 바뀔 때 알아서 animation이 됨
+- style이나 css는 State에 의해 바뀔 수 있고 그 변화가 element를 움직이게 함.
+
+```TypeScript
+function App() {
+  const [clicked, setClicked] = useState(false);
+  const toggleClicked = () => setClicked(prev => !prev);
+
+  return (
+    <Wrapper onClick={toggleClicked}>
+        <Box style={{
+            justifyContent: clicked ? 'center' : 'flex-start',
+            alignItems: clicked ? " center": "flex-start"
+          }}
+        >
+          <Circle layout></Circle>
+        </Box>
+    </Wrapper>
+  );
+}
+```
+
+<br><br>
