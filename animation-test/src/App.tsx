@@ -7,19 +7,20 @@ const Wrapper = styled(motion.div)`
   width: 100vw;
   background: linear-gradient(135deg, rgb(116, 185, 255), rgb(223, 230, 233));
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  flex-direction: column;
+  flex-direction: row;
 `;
 
 const Box = styled(motion.div)`
-  width: 400px;
-  height: 400px;
+  width: 300px;
+  height: 300px;
   background-color: rgba(255, 255, 255, 1);
-  border-radius: 40px;
-  position: absolute;
+  border-radius: 30px;
   top: 100px;
   display: flex;
+  justify-content: center;
+  align-items: center;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.06);
 `;
 
@@ -38,12 +39,11 @@ function App() {
 
   return (
     <Wrapper onClick={toggleClicked}>
-        <Box style={{
-            justifyContent: clicked ? 'center' : 'flex-start', 
-            alignItems: clicked ? " center": "flex-start"
-          }}
-        >
-          <Circle layout></Circle>
+        <Box >
+          { !clicked ? <Circle layoutId="circle" style={{borderRadius: '50px'}}/> : null}
+        </Box>
+        <Box >
+          { clicked ? <Circle layoutId="circle" style={{borderRadius: '0px', scale: 2}}/> : null}
         </Box>
     </Wrapper>
   );

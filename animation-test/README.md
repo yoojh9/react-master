@@ -487,6 +487,7 @@ function App() {
 - Framer Motion은 무언가 외부의 힘에 의해 바뀐 것을 감지함
 - layout이라는 prop을 element에게 주면 그 element는 layout이 바뀔 때 알아서 animation이 됨
 - style이나 css는 State에 의해 바뀔 수 있고 그 변화가 element를 움직이게 함.
+- 코드: https://github.com/yoojh9/react-master/commit/6d3e72adb6a5e1fb743e39e608d55942b8cab197
 
 ```TypeScript
 function App() {
@@ -508,3 +509,27 @@ function App() {
 ```
 
 <br><br>
+
+# 10. Shared Layout Animation
+
+- **layoutId**: layoutId prop에 같은 값을 주면 Framer Motion은 같은 UI Component라고 생각한다.
+- 아래 코드는 layoutId prop이 없었을 경우에는 (hide, show), (show, hide)가 각각 일어났었다.
+- 하지만 layoutId를 주면 클릭 시 hide, show가 아닌 왼쪽에서 오른쪽으로 circle 컴포넌트가 이동하고, 다시 한번 클릭하면 오른쪽에서 왼쪽으로 circle 컴포넌트가 이동하는 것을 볼 수 있다.
+
+```TypeScript
+function App() {
+  const [clicked, setClicked] = useState(false);
+  const toggleClicked = () => setClicked(prev => !prev);
+
+  return (
+    <Wrapper onClick={toggleClicked}>
+        <Box >
+          { !clicked ? <Circle layoutId="circle"/> : null}
+        </Box>
+        <Box >
+          { clicked ? <Circle layoutId="circle"/> : null}
+        </Box>
+    </Wrapper>
+  );
+}
+```
