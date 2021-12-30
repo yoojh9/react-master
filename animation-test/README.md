@@ -513,8 +513,10 @@ function App() {
 # 10. Shared Layout Animation
 
 - **layoutId**: layoutId prop에 같은 값을 주면 Framer Motion은 같은 UI Component라고 생각한다.
+- Framer는 같은 layoutId 컴포넌트를 연결하고 애니메이션을 만든다.
 - 아래 코드는 layoutId prop이 없었을 경우에는 (hide, show), (show, hide)가 각각 일어났었다.
 - 하지만 layoutId를 주면 클릭 시 hide, show가 아닌 왼쪽에서 오른쪽으로 circle 컴포넌트가 이동하고, 다시 한번 클릭하면 오른쪽에서 왼쪽으로 circle 컴포넌트가 이동하는 것을 볼 수 있다.
+- 코드: https://github.com/yoojh9/react-master/commit/3879a761e4f84ccb9f8ec80a9826eea1ecb04c87
 
 ```TypeScript
 function App() {
@@ -532,4 +534,43 @@ function App() {
     </Wrapper>
   );
 }
+```
+
+<br><br>
+
+# 11. Shared Layout Animation
+
+<img src="./image1.png" width="400px"/>
+<img src="./image2.png" width="400px"/>
+
+- 위 이미지처럼 박스 클릭 시 해당 박스가 사라지고, 화면 중간에 오는 애니메이션을 만들고 싶다면, layoutId로 연결해주면 된다.
+- 아래 코드는 첫번째 박스 클릭 시 화면 중간에 박스가 새로 뜨는데 layoutId로 연결하여, 클릭 시 첫번째 박스는 사라지는 것처럼 보인다
+
+```TypeScript
+function App() {
+  const [clicked, setClicked] = useState(false);
+  const toggle = () => setClicked(prev => !prev);
+
+  return (
+    <Wrapper onClick={toggle}>
+      <Grid>
+        <Box layoutId="hello"/>
+        <Box />
+        <Box />
+        <Box />
+      </Grid>
+      <AnimatePresence>
+        {clicked ?
+          <Overlay
+            initial={{ backgroundColor: 'rgba(0, 0, 0, 0)' }}
+            animate={{ backgroundColor: 'rgba(0, 0, 0, 0.5)'}}
+            exit={{ backgroundColor: 'rgba(0, 0, 0, 0)' }}>
+              <Box layoutId="hello" style={{width:400, height: 200}}/>
+          </Overlay> :
+          null}
+      </AnimatePresence>
+    </Wrapper>
+  );
+}
+
 ```
