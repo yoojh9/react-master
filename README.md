@@ -82,4 +82,20 @@ Styled Components 사용 방법
  
  ### 5) [animation-test](https://github.com/yoojh9/react-master/tree/main/animation-test)
  - Framer Motion
+ - Variants
+ - Transition
+   - delayChildren
+   - staggerChildren
+ - MotionValue
+   - useMotionValue()
+   - useTransform()
+   - useViewportScroll()
+ - SVG Animation
+   - path
+   - pathLength
+ - AnimatePresence
+ - Slider
+   - custom
+   - exitBeforeEnter
+ - Layout props
  
