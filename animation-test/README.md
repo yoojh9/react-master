@@ -575,3 +575,9 @@ function App() {
 }
 
 ```
+
+<br>
+
+## 1) 다른 박스를 선택할 때도 적용하려면
+
+- 코드: https://github.com/yoojh9/react-master/commit/887f04496706370ababb798af9f84b7455285551
