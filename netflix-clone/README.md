@@ -86,3 +86,9 @@ const toggleSearch = () => {
 - API: https://developers.themoviedb.org/3/getting-started/introduction
 
 - get Images: https://developers.themoviedb.org/3/getting-started/images
+
+- code: https://github.com/yoojh9/react-master/commit/ea8d706ec0110150bedc43695ca2622fab98c401
+
+<br>
+
+### 2) 홈 화면 배너 이미지
