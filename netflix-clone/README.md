@@ -75,3 +75,14 @@ const toggleSearch = () => {
 ### 5) useViewportScroll()
 
 - 스크롤 할 때 헤더 컬러값 변경하는 기능 추가
+- 코드: https://github.com/yoojh9/react-master/commit/71f692609fc343e7573fe585461fdcf9c02e717f
+
+<br><br>
+
+## 3) Home Screen
+
+### 1) get data from The Movie DB API
+
+- API: https://developers.themoviedb.org/3/getting-started/introduction
+
+- get Images: https://developers.themoviedb.org/3/getting-started/images
