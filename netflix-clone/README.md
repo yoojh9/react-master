@@ -51,6 +51,7 @@ const Input = styled(motion.input)`
 ### 4) useAnimation()
 
 - Motion Animation 함수 코드로 만들어보기
+- 코드: https://github.com/yoojh9/react-master/commit/f0a44224809bdd12ef7495b4de85ad17a1746675
 
 ```TypeScript
 const toggleSearch = () => {
@@ -68,3 +69,9 @@ const toggleSearch = () => {
     setSearchOpen(prev => !prev);
 }
 ```
+
+<br>
+
+### 5) useViewportScroll()
+
+- 스크롤 할 때 헤더 컬러값 변경하는 기능 추가
