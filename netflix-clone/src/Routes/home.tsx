@@ -1,4 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
+import { type } from "os";
 import { useState } from "react";
 import { useQuery } from "react-query";
 import styled from "styled-components";
@@ -58,6 +59,12 @@ const Box = styled(motion.div)<{bgPhoto: string}>`
     height: 200px;
     color: red;
     font-size: 16px;
+    &:first-child {
+        transform-origin: center left;
+    }
+    &:last-child {
+        transform-origin: center right;
+    }
 `;
 
 const rowVariants = {
@@ -70,6 +77,18 @@ const rowVariants = {
     exit: {
         x: -window.outerWidth -5
     }
+}
+
+const boxVariants = {
+    normal: {
+        scale: 1,
+        transition: { type: 'tween' }
+    },
+    hover: {
+        scale: 1.3,
+        y: -50,
+        transition : { delay: 0.3, type: 'tween'}
+    },
 }
 
 const offset = 6;
@@ -113,7 +132,13 @@ function Home() {
                             >
                                 {
                                     data?.results.slice(1).slice(offset*index, offset*index+offset).map(movie => 
-                                        <Box key={movie.id} bgPhoto={makeImagePath(movie.backdrop_path, "w500")}/>
+                                        <Box 
+                                            key={movie.id} 
+                                            variants={boxVariants}
+                                            whileHover="hover"
+                                            initial="normal"
+                                            bgPhoto={makeImagePath(movie.backdrop_path, "w500")}
+                                        />
                                     )
                                 }
                             </Row>

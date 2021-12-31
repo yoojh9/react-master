@@ -167,4 +167,31 @@ return (
 )
 ```
 
-- Slider에 실제 데이터 넣기
+- Slider에 실제 데이터 넣기: https://github.com/yoojh9/react-master/commit/bd9fdc77cb49ba38f48380982622b3212d556ed0
+
+<br><br>
+
+## 5) Box Animation
+
+### 1) Box Animation 1
+
+- 박스 영역에 hover하면 scale이 증가하도록 변경
+- 첫번째와 끝의 박스는 scale up 시 화면이 잘리므로, **transform-origin**을 사용하여 scale 방향을 조정한다
+
+```TypeScript
+const Box = styled(motion.div)<{bgPhoto: string}>`
+    background-color: white;
+    background-image: url(${(props) => props.bgPhoto});
+    background-size: cover;
+    background-position: center center;
+    height: 200px;
+    color: red;
+    font-size: 16px;
+    &:first-child {
+        transform-origin: center left;
+    }
+    &:last-child {
+        transform-origin: center right;
+    }
+`;
+```
