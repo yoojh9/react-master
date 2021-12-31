@@ -94,3 +94,44 @@ const toggleSearch = () => {
 ### 2) 홈 화면 배너 이미지
 
 - code : https://github.com/yoojh9/react-master/commit/8adadd723b3fce69af3b2c646785e1e033bddd8a
+
+<br><br>
+
+## 4) Slider
+
+### 1) Slider 1
+
+- React는 key 값이 다르면 서로 다른 컴포넌트라고 생각함. 그래서 새 key를 가지는 Row를 생성하려고 할 때, 원래 있던 Row는 파괴되므로 key값을 변경하면 AnimatePresence를 통해 애니메이션을 발생시킬 수 있다.
+- 그러므로 Row를 하나만 render하고 key만 바꾸면 여러 Row가 서로 옆에 붙어있는 것 같은 효과를 줄 수 있다. 무한히 이어나갈 수 있음.
+
+```TypeScript
+<AnimatePresence>
+    <Row
+        key={index}
+        variants={rowVariants}
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+    >
+        <Box/>
+        <Box/>
+        <Box/>
+    </Row>
+</AnimatePresence>
+```
+
+- window.outerWidth, window.outerHeight을 통해 사용자 브라우저의 크기를 알 수 있음.
+
+```TypeScript
+const rowVariants = {
+    hidden: {
+        x: window.outerWidth,
+    },
+    visible: {
+        x: 0
+    },
+    exit: {
+        x: -window.outerWidth
+    }
+}
+```
