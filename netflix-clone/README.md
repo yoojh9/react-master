@@ -195,3 +195,23 @@ const Box = styled(motion.div)<{bgPhoto: string}>`
     }
 `;
 ```
+
+- 코드: https://github.com/yoojh9/react-master/commit/3c11f852f352e0de63480103675926980bf84955
+
+<br>
+
+### 2) Box Animation 2
+
+아래 코드와 같이 부모 컴포넌트가 variants를 가지고 있고, whileHover에 variants의 이름을 넣어준 상태면, 이건 자동적으로 자식에게 상속된다. \<Info whileHover="hover" initial="nomal" \>처럼 prop이 상속된다.
+
+```TypeScript
+<Box
+    key={movie.id}
+    variants={boxVariants}
+    whileHover="hover"
+    initial="normal"
+    bgPhoto={makeImagePath(movie.backdrop_path, "w500")}
+>
+    <Info />
+</Box>
+```

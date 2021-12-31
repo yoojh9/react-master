@@ -118,7 +118,6 @@ function Header() {
     const {scrollY, scrollYProgress} = useViewportScroll();
 
     const toggleSearch = () => {
-        console.log(searchOpen)
         if(searchOpen){
             // trigger the close animation
             inputAnimation.start({
