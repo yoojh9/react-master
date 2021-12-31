@@ -50,8 +50,11 @@ const Row = styled(motion.div)`
     width: 100%;
 `;
 
-const Box = styled(motion.div)`
+const Box = styled(motion.div)<{bgPhoto: string}>`
     background-color: white;
+    background-image: url(${(props) => props.bgPhoto});
+    background-size: cover;
+    background-position: center center;
     height: 200px;
     color: red;
     font-size: 16px;
@@ -69,12 +72,25 @@ const rowVariants = {
     }
 }
 
+const offset = 6;
 
 function Home() {
     const {data, isLoading} = useQuery<IGetMovieResult>(["movies", "nowPlaying"], getMovies);
-    console.log(data, isLoading);
     const [index, setIndex] = useState(0);
-    const increaseIndex = () => setIndex(prev => prev+1)
+    const [leaving, setLeaving] = useState(false);
+
+    const increaseIndex = () => {
+        if(data){
+            if(leaving) return;
+            toggleLeaving();
+            const totalMovies = data.results.length -1;
+            const maxIndex = Math.floor(totalMovies / offset) -1;
+            
+            setIndex(prev => prev === maxIndex ? 0 : prev+1)
+        }
+    }
+    
+    const toggleLeaving = () => setLeaving(prev => !prev)
     
     return (
         <Wrapper>
@@ -86,7 +102,7 @@ function Home() {
                         <Overview>{data?.results[0].overview}</Overview>
                     </Banner>
                     <Slider>
-                        <AnimatePresence>
+                        <AnimatePresence initial={false} onExitComplete={toggleLeaving}>
                             <Row 
                                 key={index} 
                                 variants={rowVariants} 
@@ -96,8 +112,8 @@ function Home() {
                                 transition={{type: 'tween', duration: 1}}
                             >
                                 {
-                                    [1,2,3,4,5,6].map(i => 
-                                        <Box key={i}>{i}</Box>
+                                    data?.results.slice(1).slice(offset*index, offset*index+offset).map(movie => 
+                                        <Box key={movie.id} bgPhoto={makeImagePath(movie.backdrop_path, "w500")}/>
                                     )
                                 }
                             </Row>

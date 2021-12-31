@@ -135,3 +135,36 @@ const rowVariants = {
     }
 }
 ```
+
+- 코드: https://github.com/yoojh9/react-master/commit/d8132cfd061f49651d00f05f3235323aa68c3f62
+
+<br>
+
+### 2) Slider 2
+
+- 현재 코드에 문제가 있는데, 계속 클릭해서 index를 늘리면 이전 Row 애니메이션이 exit 되지 않았는데, 현재 row가 animate 돼서 겹쳐보이는 현상이 나타난다.
+- 이 문제를 해결하기 위해 leaving이라는 state를 두고 \<AnimatePresence\>의 onExitComplete={} 속성에서 state를 변경하는 작업을 추가한다.
+
+```TypeScript
+
+const increaseIndex = () => {
+    if(leaving) return;
+    toggleLeaving();
+    setIndex(prev => prev+1)
+}
+
+const toggleLeaving = () => setLeaving(prev => !prev)
+
+
+return (
+    <Wrapper>
+        ...
+        <Slider>
+            <AnimatePresence onExitComplete={toggleLeaving}>
+            ...
+        </Slider>
+    </Wrapper>
+)
+```
+
+- Slider에 실제 데이터 넣기
