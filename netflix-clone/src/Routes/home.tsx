@@ -59,7 +59,7 @@ const Box = styled(motion.div)<{bgPhoto: string}>`
     height: 200px;
     color: red;
     font-size: 16px;
-    position: relative;
+    //position: relative;
     &:first-child {
         transform-origin: center left;
     }
@@ -100,7 +100,7 @@ const boxVariants = {
         transition: { type: 'tween' }
     },
     hover: {
-        zIndex: 99,
+        //zIndex: 99,
         scale: 1.3,
         y: -50,
         transition : { 
