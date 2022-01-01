@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { type } from "os";
 import { useState } from "react";
 import { useQuery } from "react-query";
+import { useHistory, useRouteMatch } from "react-router-dom";
 import styled from "styled-components";
 import { getMovies, IGetMovieResult } from "../api";
 import { makeImagePath } from "../utils";
@@ -59,6 +60,7 @@ const Box = styled(motion.div)<{bgPhoto: string}>`
     height: 200px;
     color: red;
     font-size: 16px;
+    cursor: pointer;
     //position: relative;
     &:first-child {
         transform-origin: center left;
@@ -126,6 +128,10 @@ const infoVariants = {
 const offset = 6;
 
 function Home() {
+    const history = useHistory();
+    const bigMovieMatch = useRouteMatch<{movieId: string}>("/movies/:movieId");
+    console.log(bigMovieMatch); // {"path": "/movies/:movieId", "url": "/movies/580489", "isExact": true, "params": { "movieId": "580489" }}
+
     const {data, isLoading} = useQuery<IGetMovieResult>(["movies", "nowPlaying"], getMovies);
     const [index, setIndex] = useState(0);
     const [leaving, setLeaving] = useState(false);
@@ -142,7 +148,10 @@ function Home() {
     }
     
     const toggleLeaving = () => setLeaving(prev => !prev)
-    
+    const onBoxClicked = (movieId: number) => {
+        history.push(`/movies/${movieId}`);
+    }
+
     return (
         <Wrapper>
             {isLoading ? 
@@ -165,11 +174,13 @@ function Home() {
                                 {
                                     data?.results.slice(1).slice(offset*index, offset*index+offset).map(movie => 
                                         <Box 
+                                            layoutId={movie.id+""}
                                             key={movie.id} 
                                             variants={boxVariants}
                                             whileHover="hover"
                                             initial="normal"
                                             bgPhoto={makeImagePath(movie.backdrop_path, "w500")}
+                                            onClick={() => onBoxClicked(movie.id)}
                                         >
                                             <Info variants={infoVariants}>
                                                 <h4>{movie.title}</h4>
@@ -180,6 +191,22 @@ function Home() {
                             </Row>
                         </AnimatePresence>
                     </Slider>
+                    <AnimatePresence>
+                        {bigMovieMatch ? (
+                            <motion.div 
+                                layoutId={bigMovieMatch.params.movieId+""}
+                                style={{
+                                    position: "absolute", 
+                                    width: "40vw", 
+                                    height:"50vh", 
+                                    backgroundColor:"red", 
+                                    top: 50, 
+                                    left: 0, 
+                                    right: 0,
+                                    margin: "0 auto" }}
+                            />
+                        ): null}
+                    </AnimatePresence>
                 </>
                 )
             }

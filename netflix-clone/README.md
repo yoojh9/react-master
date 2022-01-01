@@ -215,3 +215,22 @@ const Box = styled(motion.div)<{bgPhoto: string}>`
     <Info />
 </Box>
 ```
+
+- 코드: https://github.com/yoojh9/react-master/commit/0900f8c7b4f48db21abaf76c841069d092ec7998
+
+- Box 컴포넌트 position:relative 지우고 (이미 Row 컴포넌트가 position: absolute라서) boxVariants hover에서 zIndex 지움 (https://github.com/yoojh9/react-master/commit/2233e1094803bde7b74464701b34e0f0e37e4866)
+
+<br><br>
+
+## 6) Movie Modal
+
+### (1) useHistory()
+
+- useHistory() 훅을 사용하면 URL을 왔다 갔다 할 수 있다.
+- 여러 라우트 사이를 이동할 수 있다.
+
+<br>
+
+### (2) useRouteMatch()
+
+- 지금 그 URL에 있는지 아닌지를 판단할 수 있다.
