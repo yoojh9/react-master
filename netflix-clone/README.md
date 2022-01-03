@@ -265,3 +265,7 @@ const search = new URLSearchParams("?keyword=dune&region=kr");
 search.get("keyword"); // dune
 search.get("region)"; //kr
 ```
+
+<br>
+
+- 코드: https://github.com/yoojh9/react-master/commit/559da155fe09a6e5ae583574d41c7066066bf9e6
