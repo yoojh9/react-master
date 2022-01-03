@@ -249,3 +249,19 @@ const Box = styled(motion.div)<{bgPhoto: string}>`
 <br>
 
 ### (3) Movie Modal Part 3
+
+- 코드: https://github.com/yoojh9/react-master/commit/21a1a36d7e546401e4141e8f2fa06c06356346a8
+
+<br><br>
+
+## 7) Search Redirection
+
+### (1) React Hook Form
+
+### (2) URLSearchParams()
+
+```JavaScript
+const search = new URLSearchParams("?keyword=dune&region=kr");
+search.get("keyword"); // dune
+search.get("region)"; //kr
+```
