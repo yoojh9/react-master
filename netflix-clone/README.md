@@ -244,3 +244,8 @@ const Box = styled(motion.div)<{bgPhoto: string}>`
 ### (2) Movie Modal Part 2
 
 - 스크롤을 해도 화면 중앙에 Modal을 보이게 하고 싶으면 Framer Motion의 useViewportScroll()의 scrollY값을 Motion 영역의 top 값으로 넣어주면 된다.
+- 코드: https://github.com/yoojh9/react-master/commit/24eb66c5b24e1ef76d1f93230184f25e42dc36ba
+
+<br>
+
+### (3) Movie Modal Part 3
